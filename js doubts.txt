@@ -1,0 +1,27 @@
+just-in time compiler
+Interpreter based
+Dynamically based
+Rendering Engine & js engine
+Ecma Engine
+fat arrow function
+function vs method
+tofix
+window.onload
+window.location vs window.location.href
+bind
+(compare function:
+function(a, b){return a - b} )
+//MAP METHOD
+var a = [], f = function() {};
+the expression:
+
+a.map(f);
+is equivalent to:
+
+Array.prototype.map.call(a, f);
+OR 
+ var menu = document.getElementById('menu');
+    var items = menu.getElementsByClassName('item');
+    console.log(items);
+    var data = Array.prototype.map.call(items, b => b.textContent);
+The reason that they had to use Array.prototype.map.call(links,...); instead of just links.map(...);, is that querySelectorAll does not return a normal array, it returns a NodeList that does not have a map method.
