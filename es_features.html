@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var txt= "";
+        var old_arr=[4,5,7,9,2];
+        var func1,val;
+        //A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.
+        old_arr.forEach(func1);//func1 is a callback function which is called every time for eavh values
+        function func1(val){
+            console.log(val);
+        }
+        //adding using reduce function array.prototype.reduce(), accumulator stores the returned value after addition, and current_value stores the value which is to be added now
+        //this function actually reduces the array to single element by adding
+        console.log(old_arr.reduce((acc,cur_val)=>acc+cur_val,0))
+        // OR \\
+        console.log(num.reduce(function(total,vals){return total+vals;}));
+        //syntax , array_name(reduce_function(accumulator,current_value)=>accumulator+current_value,0)
+    </script>
+
+    <script>
+        //dfference between array.map and array.foreach is that array.foreach returns undefined but array.map returns a new modifed array, as shown below
+        console.log(old_arr.forEach(func3));//func1 is a callback function which is called every time for eavh values
+        function func3(val){
+            return val;//returns undefined because forEach doesn't returns any value
+        }
+        //  OR another way  \\
+        console.log(old_arr.forEach(function(val){return val;}));//func1 is a callback function which is called every time for eavh values
+        
+        console.log(old_arr.map(func2));
+        function func2(val1){
+            return val1*2;//returns a new modified array
+        }
+    </script>
+
+    <script>
+        //Filter() method returns a new array containing only the elements which pass the given condition or test
+        new_arr = old_arr.filter(func4);
+        console.log(new_arr);
+        function func4(cur_val,index,array){
+            // console.log(cur_val);
+            // console.log(index);
+            // console.log(array);
+            return cur_val>5;
+        }
+    </script>
+
+    <script>
+        //find out the names who have their sports :"Basketball" with map, filter & foreach
+        let students = [
+        { id: "001", name: "ankita", sports: "Cricket" },
+        { id: "002", name: "deba", sports: "Basketball" },
+        { id: "003", name: "dilip", sports: "Cricket" },
+        { id: "004", name: "tuban", sports: "Basketball" },
+        { id: "005", name: "bubu", sports: "Hockey" }
+    ]
+
+    //At first filter will return the two array objects in students array with basketball with id=002 & id=004, and then after receiving the objects in this format below,
+    //{id: "002", name: "Smriti", sports: "Basketball"} &&{id: "004", name: "Bakul", sports: "Basketball"} 
+    //we then use map() method to return the names out of that two array objects 
+    var arr1= students.filter(function(student){return student.sports === "Basketball"}).map(function(student1){return student1.name})
+    
+    arr1.forEach(function(val4){console.log(val4);});//now we diplay the names we recieved using foreach
+
+    </script>
+
+    <script>
+        var person = {
+            color : "blue",
+            get func_nm(){
+                return this.color;
+            }
+        };
+        
+        console.log(person.func_nm);
+    </script>
+
+    <script>
+        var fish={
+            size : 23,
+            get func_nm3(){
+                return this.color;
+            },
+            set func_nm2(val){
+            this.color = val;
+        }
+        };
+        fish.func_nm2="red";
+        console.log(fish.func_nm3);
+    </script>
+
+    <script>
+       function create2DArray(rows, columns, value = (x, y) => 0) {
+  var array = new Array(rows);
+//   console.log(array);
+  for (var i = 0; i < rows; i++) {
+    array[i] = new Array(columns);
+    for (var j = 0; j < columns; j++) {
+        // console.log(value(i,j));
+      array[i][j] = value(i, j);
+    }
+  }
+
+  return array;
+}
+// var row=prompt("enter row:");
+// var col=prompt("enter col:");
+var array = create2DArray(3, 4, (row, column) => row + column);
+console.log(array);
+    </script>
+</head>
+<body>
+   
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="aa">wfefwe</h1>
+    <p class="demo">ewfdwefew</p>
+
+    <div id="exmpl" class="dell">
+        <span id="bye" class="dell dell2" model="dd" >bye</span>
+        <span id="hii" data-test-name="hellow deba" data-key="this is for data test" >hellow</span>
+        <h1 class="bb">wdwefe</h1>
+    </div>
+</body>
+</html>
+<script>
+    const body = document.body;
+    // body.append("hellow world");here append child will show error becuase append child only used to access element nodes loke div, h1, p
+    const element = document.createElement("div");
+    console.log(element);
+
+    // so this below two lines is a risk
+    element.innerHTML= "<strong>hiiii</strong>";//innerHTML is the only way to add html element from the JS to html body, but there is a high security issue because one can inseert malacious code with innerHTML, how?? because if we take some input in prompt, and then we suppose append that value to the body with innerHTML, now if the value taken as input is a malacious code or "link", which will be appended to the body of html, now if a user clicks on the link, the malacious code contains something which will hack the computer on getting click, so its a risk
+    body.appendChild(element);
+    // now below are the three safe ways with which you can add the text nodes to an elment like div, h1, p..
+    const body2 = element.append("hfhhh");//inserting text node in elment
+    body.append(element); 
+    // or 
+     element.innerText ="hello";
+     body.appendChild(element);
+    //  or
+    element.textContent = "hello2";
+    body.appendChild(element);//here append child works because we are accessing a div elemnt for adding it to the body
+   
+    // Now difference between innerText and textContent  \\
+    const divs = document.querySelector("div");
+    console.log("Exmpl of inner text:\n"+divs.innerText);//it will just paste the inner content of div elemnt
+    console.log("Exmpl of textContent:\n"+divs.textContent);//but this will print the content after checking the space in front and printing as it is shwoing in the html body with same position of x,y,z, and prints the content as string
+    </script>
+    <script>
+    // now removing nodes with "remove()"
+    var b = document.querySelector("#exmpl");
+    var s = document.querySelector("#hii");
+    var t = document.querySelector("#bye");
+    console.log(b);
+    // b.removeChild(s);//this function removes  the specific child ("here span id='hi'") of a sepecific element "here div"
+    // b.remove();// this  actiually removes the entire element from the html document view and not from console
+    console.log(s);
+    // div.append(s);//here we are again adding the value we have removed
+</script>
+
+<script>
+    var attr  = document.querySelector("#exmpl");
+    var attr1 = document.querySelector("#hii");
+    var attr2 = document.querySelector("#bye");
+    console.log(attr.id);
+    console.log("we can see each letters of value of id with this syntax: "+"1st:"+ attr2.getAttribute("id")[0] +", 2nd:"+ attr2.getAttribute("id")[1] +", 3rd:"+ attr2.getAttribute("id")[2]);
+    console.log(attr2.getAttribute('id'));
+    console.log(attr1.getAttribute('id'));
+    var bb=document.getElementsByClassName('dell');
+    console.log(bye.getAttribute('class'));
+    cattr1.setAttribute("attrib","iphone");//creating a new attribute with name "attrib"
+    // attr1.id="sadasd";//can edit the speciic attribute's value
+    attr2.removeAttribute("model");
+</script>
+<script>
+    var attr  = document.querySelector("#exmpl");
+    var attr1 = document.querySelector("#hii");
+    var attr2 = document.querySelector("#bye");
+    // for data-sets
+    console.log(attr1.dataset);
+    console.log(attr1.dataset.testName);//we have to write in camelcase letters
+    // creating a dataset attribute
+    attr2.dataset.anotherAttr = "Next Attribute";
+</script>
+<script>
+    var attr  = document.querySelector("#exmpl");
+    var attr1 = document.querySelector("#hii");
+    var attr2 = document.querySelector("#bye");
+    attr2.classList.add('new-class', 'another-class');//her we cann add as many class as you want
+    // attr2.classList.remove("dell");//this is to remove a specific class name from the attribute of an element
+    // toggle class is used to delete or add a class name, if the className exist, then it will delete it, and if the class name doesnot exist in the class, then it will create the attribute..
+    // attr2.classList.toggle(" hiiss");//here its creting a className "hiiss" in class 
+    // attr2.classList.toggle("dell");//here its deleting the className because it already exists in class
+    console.log(attr2.classList.contains('bad-class'))
+    // false
+    attr2.classList.add('new-class')
+    console.log(attr2.classList.contains('new-class'))
+    // true
+
+    // ther are two below codes which will check if the "conatins" function is true, then addaa class name, or else remove a class name
+    if (attr2.classList.contains('sexy')) 
+    {
+        attr2.classList.remove('sexy');
+    } else {
+        attr2.classList.add('sexy');
+    }
+    // OR just can write ,it's same as the above if-else code
+    // attr2.classList.toggle('sexy');
+    // OR we can write
+    // console.log('this will replace one value of a class, with another one');
+    // attr2.classList.replace('sexy','sexyBitch');
+    console.log("iterating or looping through a same class for its all values");
+    attr2.classList.forEach(className =>{
+        console.log(className);
+    });
+    
+</script>

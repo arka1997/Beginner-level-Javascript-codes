@@ -1,0 +1,76 @@
+ 
+<!DOCTYPE html>
+<html >
+<head>
+      <style>
+        .form {
+          position:absolute;
+        }
+        .form .head {
+          width:100%;
+          height:60px;
+          display:flex;
+        }
+        .form .body {
+          /*position:absolute;*/
+          overflow:hidden;
+        }
+        .form .body > div {
+          position:absolute;
+          transition:all 300ms ease-in-out;
+        }
+        .form .body > div.login {
+          left:0%;
+        }
+        .form .body > div.signup {
+          left:100%;
+        }
+        .form .body.active > div.login {
+          left:-100%;
+        }
+        .form .body.active > div.signup {
+          left:0%;
+        }
+        </style>
+</head>
+<body>
+  <div class="form">
+  <div class="head" class="signup">
+    <button onclick="changeTab(this)" data-tab="login" class="login-tab">Login</button>
+    <button onclick="changeTab(this)" data-tab="signup" class="signup-tab">Signup</button>
+  </div>
+  <div class="body" id="form-body">
+    <div class="login">
+      <div class="form-row">
+        <label for="">Email</label>
+        <input type="text" placeholder="Email">
+      </div>
+      <div class="form-row">
+        <button>Login</button>
+      </div>
+    </div>
+
+    <div class="signup">
+      <div class="form-row">
+        <label for="">Name</label>
+        <input type="text" placeholder="Name">
+      </div>   
+      <div class="form-row">
+        <button>Sign up</button>
+      </div>      
+    </div>
+  </div>
+</div>
+<script>function changeTab(ref){
+    if(ref.getAttribute("data-tab") == "login"){
+      document.getElementById("form-body").classList.remove('active');
+      
+    } else {
+      document.getElementById("form-body").classList.add('active');
+    }
+    
+  }</script>
+    <script  src="js/index.js"></script>
+
+</body>
+</html>

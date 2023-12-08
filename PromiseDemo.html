@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Promise Demo Example
+</body>
+</html>
+<script>
+    // question: Wha
+    // let promise  = new Promise(function(resolve, reject){ executor(the producing code,"singer")})
+// newPromise(executor) -> splits into two types (resolve, reject) ->
+// status : "pending"
+// result: undefined
+
+// resolve(value) -> state  : "fulfilled"
+//                   result :    value
+
+// reject(value)  -> state  : "rejected"
+//                   result :   error
+
+let promise1 = new Promise(function (resolve,reject){
+    setTimeout(() => resolve("done"), 1000);
+});
+promise1.then(() => alert('hii babe'));
+let promise = new Promise(function(resolve, reject){
+    setTimeout(() => reject(new Error("Whoops")),1000);
+});
+</script>
+
+<script>
+    let Cakefactory = {
+        items: ["flour", "Grinded Biscuit"],
+        CrushedFruits: ["orange", "mango", "pineapple"],
+        creamFlavour: ["chocolate", "vanilla", "strawberry"],
+    };
+    let bb = confirm("Is shop open");
+    if(bb == true){
+        is_shop_open = bb;
+    }
+    else{
+        is_shop_open = bb;
+    }
+    // So first we take a order, and then we make a promise
+    let order = (time, work) => {
+        return new Promise()
+    };
+</script>
+<script>
+    //  without chaining we can add multiple .then handlers to a single promise like,
+let promise3 = new Promise(function(resolve,reject){
+    // some executable code or timeout function
+    setTimeout(()=> {console.log("yo yo"); resolve(Math.PI)},0000);
+})
+promise3.then(function(result){setTimeout(() => {console.log(result*4*4)},2000)});
+promise3.then(function(result){setTimeout(() => {console.log(Math.floor(2*result*4));},0000)});
+promise3.then(function(result){setTimeout(() => {console.log(3*result*4)},2000)});
+</script>
+loadscrpipt().then(function(result) { })

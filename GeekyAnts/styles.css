@@ -1,0 +1,32 @@
+body,
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 72px;
+    font-family: "Arial Black";
+}
+
+p.design {
+    color: grey;
+    font-size: 26px;
+}
+
+div.nav a {
+    padding: 10px;    
+}
+
+div.nav a.colorNav {
+    background-color: #aa5200;
+    color: white;
+}
+
+.left {
+    width: 58%;
+}
+
+.right1 {
+
+    width: 20%;
+}

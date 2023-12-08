@@ -1,0 +1,412 @@
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+<br>
+<h1>this is a heading which is hidden when a button is clicked </h1>
+
+<p>this  is a paragraph which will be overwritten along with the heading porion when we click the button, a valu is written in output using the write() method</p>
+<p id="demo"></p>
+<p id="god"><b>hjfhjj</b></p>
+<script>
+    //PART 1//
+// var name=("DEBANJAN");
+// document.write(name+"dfs");
+//var a= prompt("Enter Name:"); //to take input a number using prompt
+ //document.write(a);//to write the user output in document and show in console
+// var b= prompt("enter age");
+// document.write(b);
+// document.write(alert("Thank You"));
+</script>
+<script>
+//PART 2//ONCLICK FUNCTION
+function overwrite()
+{   //Using document.write() after an HTML document is fully loaded, will delete all existing HTML.
+    document.write('<html><b><p style="color:red;">hii baby!<br><button id="hh" onclick="func12()">go back</button></p><b><html>');
+	
+
+}
+function func12()
+{
+window.location.href='scripts1.html';
+document.getElementById("hh").innerHTML="";}
+</script>
+
+<button type="button" id="jio" onclick="overwrite()">press me</button><!--button of PART 2-->
+<!--END-->
+
+<script>
+//PART 2//submit button changes to thank you
+function overwrite1()
+{   //Using document.write() after an HTML document is fully loaded, will delete all existing HTML.
+    document.getElementById("yup").innerHTML='<html><b><p style="color:red";>thankyou</p></b>';
+	}
+</script>
+<p id="yup">
+<button type="button" onclick="overwrite1()">press me!</button><!--button of PART 2-->
+</p>
+<!--END-->
+
+<script>
+ //PART 3//
+function newwindow()
+{
+var windows=window.open("","MsgWindow","width=200,height=100");
+windows.document.write("<p>this is a sub windows for some other information like registration is performed<p>");
+}
+</script>
+<button type="button" onclick="newwindow()">open newWindow!</button><!--button of PART 3...-->
+<!--END-->
+
+<script>
+        //PART 4// CHECKING IF ELSE
+//var check= prompt("Enter Number:"); //to take input a number using promptdocument.write(a);//to write the user output in document and show in console
+if(check==24)//if the value of variable "var a" above is true which is 24, then if condiotion satosfies, and it prints "condition true"..
+{
+    document.write("condition true");
+}
+else{
+    document.write("Different number");
+}
+</script>
+<br>
+<!--END-->
+<!--NOTE: To run the below code, open the "var num =prompt()" parenthesis-->
+<script>
+    //var num=prompt("enter number");
+    for(i=0;i<num;i++)
+    {
+        document.write("<br>"+i);
+    }
+//in the loop the i=0 is assigned at first time,then the i=0 is never considerd..only the condition is checked, and then the inner content is executed,and then the increment is done after the execution of the 
+</script>
+<!--END-->
+<br>
+<!--Annother loop-->
+<script>
+    var i=0;
+    for(;i<5;)
+    {
+        i++;
+        document.write(i);
+    }
+//theloop is incremented first because after the condition is checked, the body is executed first, and then the incremeent operater operates.
+//So here as condition satisfies->we enter body, in body there is increment operator inside, instead of outside,and the we print value of i.
+//So the first value here starts from i=1, and when i=4;the body is executed, and i is incremented to i=5,and 5 is printed in this loop
+</script>
+<!--END-->
+<br>
+<!--Annother Way loop-->
+<script>
+    var l=0;
+    for(; ; l++)
+    {   //condition part
+        if(l==3)
+        {break;}
+        document.write(l);
+    }
+    document.write("<br> rest of the code");
+    </script>
+<!--END-->
+
+<!--CONTINUE STATEMENT-->
+<script>
+    for(i=0;i<6;i++)
+    {
+        if(i==3||i==4)//Here for "4" & "3" the loop is skipped and we get output of (0,1,2,5)
+        {
+            continue;//here we using this we can skip a portion or steps of a code,if condition satisfies...
+        }
+        document.write(i+"<br>");
+    }
+//in the loop the i=0 is assigned at first time,then the i=0 is never considerd..only the condition is checked, and then the inner content is executed,and then the increment is done after the execution of the 
+</script>
+<!--END-->
+<script>
+
+    //ARGUMENTS OBJECT //
+    // The argument object contains an array of the arguments used when the function was called.
+    // This object contains an entry for each argument passed to the function, the first entry's index starting at 0. 
+    // The arguments object is not an Array. It is similar to an array, but does not have any Array properties except length.
+
+    display("I love","you idiot",5655, [10, 40]);//here these each strings like " I love" are arguments..and "[10,40]" are array arguments, passed in array format...
+    function display(string1,string2,def=null,a=[null,null])//here string1 & string2 are parameters, and "def" is a default parameter whose value is null, until a argument is passed in this parameter
+    {   //Here we use arguments objects,and is used in array format. Arguments are objects or reference.
+        //arguments[0]="I hate";//we can even change the coming argument ar "0" index here.the value is permanently chnaged here
+        document.write(arguments[0]+"");//here the first argument object is printed with index=0 gives =>I love
+        document.write(arguments[1]+" <br>");//This prints "you sohini"...
+        document.write("Default parametervalues="+a[0]+"<br>");//here the first argument object is printed with index=0 gives =>I love
+        cconsole.log(arguments);
+        document.write("Default parameter array values="+a[1]+"<br>");
+        document.write("Argument length="+arguments.length+"<br>");//this returns no. of arguments (ex. "I love","babu") are 3.
+        //Each arguments are stored in array forma like arguments[0],etc.,
+    }
+</script>
+<!--END-->
+
+<!--REST PARAMETERS-->
+<script>
+  //Rest parameter is an special way to handle function parameter, allowing us to store any number of various inputs(string,int) as parameters in a function. This allows us to represent an indefinite number of arguments as an array. With the help of a rest parameter a function can be called with any number of arguments, no matter how it was defined.  
+   //Usually, ...args means "any number of values", and returs rest of the argument wich is not defined
+   function rest(a,b, ...args)
+   {
+       console.log("a: " + a);//this value is shown in =>Ispect => Console
+       console.log("b: "+ b);
+       console.log(args);
+   }
+   rest(10,20,30,45,6,676,65)
+</script>
+<!--END-->
+
+<script>
+    function show()
+    {   //Global function variable 'j', only accessed from inside different other function, but not outside any functions..
+        j="I am a global Variable inside Function";
+        document.write(j+ "<br>");//this will print the global variable
+    }
+    show();
+    //printing value of global variable 'j' outsode function..
+    document.write(j+"<br");//this will show error..from outside this function global variable cannot be accessed
+    function disp()
+    {   //from inside this another function we can access value of 'j'. the variable is global only inside functions
+         document.write(j+ "<br>");//here this will print value of 'j'..
+    }
+    disp();
+    if(true)
+    {
+        document.write(j+ "<br>");  //in if block also the globl function variable can be accessed
+    }
+    //NOTE:-
+//If there is a function inside a function the inner function can access outer functcion's variables but outer function cannot access inner function's variables.
+//function arguments (parameters) work as local variables inside functoins.
+</script>
+<!--END-->
+
+<script>
+    //BLOCK SCOPE
+
+if(true)
+{
+	var nos=5;//declaring var, is a kind of global variable whose value exists inside the block and even outside block which will create confusion if taken same variable inside and outside...
+	document.write( nos+"<br>");
+	}
+	document.write(nos+"<br>");
+    if(true)
+{
+	
+	let no=4;//declaring let, is a kind of global variable whose value exists only inside a block, so no confusion arises if a same variable is taken outside the block, their value will be different.
+    //if let no is used inside or outside, the value will not be confused, because both are different
+    //one exists inside, and the the other exists outside block
+	document.write("number" + no);//this is inside block
+	}let no=5;//same variable name, but different value, so no confusion..
+	document.write("number" + no);//outside the block, and shows undefined
+</script>
+<!--END-->
+
+<script>
+var i="Hello";//the browser first scans the code, and searches for all the "var",then the declarations are sent or "hoisted" to the top of the script block, and the initialisation stays in their place
+
+//Example of compile phase w.r.t below code//
+/*
+var i; 
+i="hello";
+document.write(i+"<br>");
+function show(){
+    var i;
+    document.write(i+"<br>");
+    i="geekyshows";
+document.write(i+"<br>");
+}
+*/
+document.write("<br>"+i+"<br>");
+function show()
+{
+    document.write(i+"<br>");
+    var i="geekyshows";
+    document.write(i+"<br>");
+}
+show();
+</script>
+<!--END-->
+
+<script>
+    //Anonymous Function//
+    var disp = function(){ //this is kinnd of function which is stored in variables and is without a function name, and is ended with a semicolon..
+        document.write("geeksforgeeks");
+    };
+    disp();
+    var disps = function(x,y){ //this is kinnd of function which is stored in variables and is without a function name, and is ended with a semicolon..
+        document.write("<br>"+x+"<br>"+y);
+    };
+    disps(10,20);//here the name of the calling function is a variable's name...
+</script>
+<!--END-->
+<br>
+<script>
+    
+    //PASSING ANONYMOUS FUNCTION ARGUMENTS//
+    function yoo(myfun)///this  variable "myfun" will store the the anonymous function as a parameter statement ,i.e.,myfun=function(){return "Honey Singh";}
+    {//In next line my func variable is called, and the entire above statement stored in "myfun" variable, i
+        document.write(myfun);
+        return myfun();//myfunc() calls the anonymous function
+        return myfun;//this is a wrong way of calling function.Use brackets..
+    }
+    document.write(yoo(function(){return "<br>Honey Singh";}));
+</script>
+<!--END-->
+<script>
+    //RETURNING ANONYMOUS FUNCTIONS//
+    function disco(a)
+    {
+        return function(b){return a+b;};
+    }
+    var af = (disco(10));
+    document.write("<br>"+af);
+    document.write("<br>"+af(20));
+</script>
+<!--END-->
+
+<script>
+    //Arrow function with parameter
+    var newfun= (a,b) => {  //a new way to define a function
+        document.write("<br>"+a+"<br>");
+        document.write(b);
+    }
+    newfun(10,4);
+</script>
+<!--END-->
+<script>
+    //Function Expression
+    var myfun1 = function show(a){
+        return a;
+    };
+    //Anonymous Function
+    var myfun2 = function(b){
+        return b;
+    };
+    //Arrow Function
+    var myfun = c => {return c;};
+    or
+    var myfun = c => c;
+    //Arow function
+    var myfun4 = (a,b) => {return a+b};
+    document.write(myfun4(10,20));
+</script>
+<!--END-->
+
+<script>
+    //IIFE example//
+     var result = (function () {
+    var name = "Barry"; 
+    return name; 
+})(); 
+// Immediately creates the output: 
+document.write("<br>"+result);
+    //IIFE(Immediately Invoked function Expression) function runs as soon as it defined
+    //Its kind of anonymous function
+    //self-executing function, without any calling function
+    //here global variables need not to be declared, so there will eb no confusion with data variables
+    //The statement below executes the function directly without any calling.just cover it with brackets '()' known as 'Grouping Operator()' and print something
+    (function (a,b){ 
+        document.write("<br>"+(a+b));
+    })(50,20);//calling from here in parenthesis
+    //Normal Function vs IIFE func//
+    function sex(a){document.write("<br>"+a)}sex(10);//Normal function
+   
+</script>
+<!--END-->
+<script>
+    var a=13;
+    document.write(typeof(a));
+    document.write(typeof("hello"));
+</script>
+<!--END-->
+<script>
+    //Difference between null and undefined
+    document.getElementById("demo").innerHTML =
+    typeof undefined + "<br>" +
+    typeof null + "<br><br>" +
+    (null === undefined) + "<br>" +
+    (null == undefined);
+    </script>
+    <script>
+        //A variable should be always declared with "let" instead of "var" , because decalaring any variable with "var" will store it in the "windows" which is a object in console where different properties and methods are defined.So using "var" it may override any property already declared in windows object,or the variable name may get same as one of the pproperty in the list
+        //thatswhy let is used which doesnot store any variable to windows-object list.
+        function mylet()
+        {   var bi=20;//this will be shown in the "window" object, in console
+            let ao=11;//this won't be shown
+            if(true)
+            var bi=40;//when the value is changed to 40 here, the value of 'bi' outside this function block is '40' only.But value declared in let exists in the block only and gets destroyed ouside the blocks.
+            {   let ao=67;
+                document.write("<br>let="+ao+"<br>");
+                document.write("<br>var="+bi+"<br>");
+            }
+                document.write("<br>let="+ao+"<br>");
+                document.write("<br>var="+bi+"<br>");
+        }   //let should be used in js instead of var...
+                 mylet(); //FUNCTION CALL//
+    </script>
+    <!--WND-->
+
+    
+
+
+
+<!--<script>
+    function foo(){
+var a = 100;
+document.write("  ,  jj="+a);
+document.write("foo="+this.a);//this.a refers to the previous object, so its point to line 265 "var obj = { " , and this is a object which holds value of a as "I am global"
+console.log(this.a)
+bar()
+}
+
+function bar(){
+var a = 200;
+document.write(",bar="+this.a);//shows in document form
+console.log(this.a)
+}
+function doFoo(fn){
+    document.write("In doFoo func="+a)
+fn()
+}
+ var obj = {
+    
+// a: 10,
+ foo: foo
+
+}
+var a = 'I am global';
+doFoo(obj.foo)
+</script>
+
+//another qstn//6
+
+<script>
+    function f1(){
+var age=10;
+console.log(age);
+}
+
+function f1(){
+var age=12;
+console.log(age);
+} f1();
+</script>
+//END
+
+<script>
+    function fn1(){
+var age = 12;
+function fn2(){
+var age = 10;
+var age1 = 2;
+}
+console.log(age);
+console.log(age1);//this will show error
+} fn1();
+</script>
+//END
+-->
+</body>
+</html>

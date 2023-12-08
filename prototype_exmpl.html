@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // without prototype we face so much problems like if we want to declare properties from outside, then for every objects like dell, hp, we have to assign the property one by one, which is not possible everytime, when we will have multiple properties to assign for multiple objects
+    var Mobile = function(model){
+        //Instance member
+        this.model = model,
+        this.price = 20000
+    }
+    var dell = new Mobile('inspiron');//this dell is an object which initialises the property of mobile using constructor
+    var hp = new Mobile('pavilion');
+    // Now if we go an add another property for dell outside the mobile object, then we write as dell.color = "blue"
+    // adding a property to samsung
+    dell.color = "black";//now this property is available for dell object only
+    console.log("Dell color is"+" "+dell.color);
+    console.log(dell);
+    console.log("Hp color1 is"+" "+hp.color);//the color object is not available for hp object, so we should create separate property
+    hp.color ="blue";
+    console.log("hp color2 is"+" "+hp.color);//now the color is available for hp
+</script>
+<script>
+    // To solve the above problem prototype is introduced which will help to declare a global property using the parent object (here Laptop) and those properties can be accessed by any object
+    // while we create a function, two objects are created, one is the function object which contains many properties as well as a Prototype property is also their, another object is object.prototype is created, which is,
+    // actually a property of the function object.
+    // The prototype property in the function object points to prototype object.Prototype object can be accessed using function_name.prototype(for ex. Laptop.prototype)
+    // when we create objects, two objects are creates
+    // a)Mobile Object
+    // b)Mobile.Prototype object
+    var Mobile = function(model){
+        //Instance member
+        this.model = model,
+        this.price = 20000
+    }
+    var dell = new Mobile('inspiron');
+    var hp = new Mobile('pavilion');
+    // ||?? Mobile .prototype is a prototype objct of object dell, means, dell will inherit all properties of Mobile 
+    // prototype member
+    Mobile.prototype.color = "black";//assigning the property color to the Mobile prototype object or parent object (here Mobile)
+    // now the property is available for every sub-objects
+    console.log("color of dell is "+" "+dell.color);
+    console.log("color of hp is "+" "+hp.color);
+    console.log(Mobile.prototype);//here we can see only the instance  properties of the Mobile object
+    // to see all the properties including prototype properties using loop
+    for(var key in dell){
+        console.log(key);
+    }
+</script>
+<script>
+    Mobile.prototype.a === Mobile.__proto__.a//true, declaring prototype properties
+     var b1 = new Object();
+     console.log(Object.getPrototypeOf(b1));//The prototype object of b1 is Object.prototype
+     console.log(Object.getPrototypeOf(Object.prototype));//this will show null as the object.prototype point to null
+
+     var b2 = new Array();
+    //  console.log(Object.getPrototypeOf(b2));The prototype object of b2 is Array.prototype
+    // console.log(Object.getPrototypeOf(Array.prototype));the prototype object of Array.prototype is object.prototype OR Object.prototype is prototype object of Array.prototype
+</script>
+<script>
+   function laptop(){
+       this.color = "blue"
+   }
+   
+   function animal(){
+        this.model = "tiger";
+        this.color = "green";
+    }
+    
+    animal.prototype.property = "roar";
+   var dell = new laptop();
+   var inspiron = new laptop();
+   
+   laptop.prototype.model="gold";
+    //  console.log(dell);
+    // console.log(Laptop);
+    console.log(inspiron);
+    console.log(laptop.prototype);//here laptop is the function name block which has a property named "prototytpe", to access the contents of the property named PROTOTYPE, we write-
+                                //....Laptop.prototype which will point to the prototype object, which containes the prototype object properties, this properties are created using laptop.prototype.color.
+   console.log(laptop.prototype === inspiron.__proto__);
+   console.log(laptop === laptop.__proto__.constructor);
+   console.log(laptop === laptop.prototype.constructor);//all are sam e
+   animal.prototype = new laptop();
+   console.log(animal.prototype);
+</script>
+<script>
+    // Prototypal Inheritance
+    var animal = function(){
+        this.age = 10;
+    }
+    animal.prototype.val = 30;
+    var lion = function(){
+        animal.call(this);//this will inherit the properties  of animal object in child object
+        this.color= "yellow";
+    }
+    // Prototype Inheritance
+    lion.prototype=Object.create(animal.prototype);
+    lion.prototype.constructor = lion;
+    
+    lion.prototype.val = 50;
+    var l = new lion();
+    var a = new animal();
+    console.log(l.age);//now we can access the property of animal class using the object of lion class
+    console.log(l.val);//value of lion prototype
+    console.log(a.val);//value of animal prototype
+    console.log(a.color);//here we cannot access thee property of child class with the object of parent class( Here animal)
+    // so to fix this this we write
+    console.log(l.color);//because the approach goes from bottom to top, which means parent object cannot be used to define the peroperties of child classs, but the cild class is used to access all the properties of parent as well as itself
+
+</script>
+<script>
+    function Plant () {
+this.country = "Mexico";
+this.isOrganic = true;
+}
+
+// Add the showNameAndColor method to the Plant prototype property
+Plant.prototype.showNameAndColor =  function () {
+console.log("I am a " + this.name + " and my color is " + this.color);
+}
+
+// Add the amIOrganic method to the Plant prototype property
+Plant.prototype.amIOrganic = function () {
+if (this.isOrganic)
+console.log("I am organic, Baby!");
+}
+
+function Fruit (fruitColor) {
+this.name = "sexy";
+this.color = fruitColor;
+}
+
+// Set the Fruit's prototype to Plant's constructor, thus inheriting all of Plant.prototype methods and properties.
+Fruit.prototype = new Plant ();
+console.log(Fruit.prototype);
+
+// Creates a new object, aBanana, with the Fruit constructor, which will inherit the whole function in the __proto__ of the fruit object shown below
+// Fruit {name: "sexy", color: "Banana"}
+// color: "Banana"
+// name: "sexy"
+// __proto__: Plant(Object)
+// Inside proto all the methods of plant object are defined as
+            // __proto__:
+            // amIOrganic: ƒ ()
+            // showNameAndColor: ƒ ()
+            // constructor: ƒ Plant()
+// __proto__: Object
+var aBanana = new Fruit ("Banana", "Yellow");
+
+// Here, aBanana uses the name property from the aBanana object prototype, which is Fruit.prototype:
+console.log(aBanana); // Banana
+
+// Uses the showNameAndColor method from the Fruit object prototype, which is Plant.prototype. The aBanana object inherits all the properties and methods from both the Plant and Fruit functions.
+console.log(aBanana.showNameAndColor()); // I am a Banana and my color is yellow.
+
+</script>
+
+<script>
+    // creating a dinosaur object
+    function Dinosaur(){
+        // this.height= 14;
+    }
+    // creating a prototype function of Dinosaur
+    Dinosaur.prototype.get_val = function(){
+        return this.power;
+    }
+    //creating a constructor function 
+
+    var Titanosaurex = function(power){
+        this.power = power;
+    }
+    var Spinosauras = function(power){
+        this.power = power;
+    }
+     Titanosaurex.prototype = Object.create(Dinosaur.prototype);// Again redefining or setting or calling child prototype to Parent prototype
+     Titanosaurex.prototype.constructor = Titanosaurex; // return or re-defines the correct child constructor again to prevent clashes
+     Spinosauras.prototype = Object.create(Dinosaur.prototype);
+     Spinosauras.prototype.constructor = Spinosauras;
+     
+     var Dino1 = new Titanosaurex("fast");
+     var Dino2  = new Spinosauras("spines");
+     console.log(Dino1.get_val());
+     console.log(Dino2.get_val());
+     console.log(Dinosaur.prototype);
+</script>
+<script>
+    // common function for inheriting the prototype prototype of  parent class with the child classess .
+    function common_inherit(parent, child){
+        child.prototype = Object.create(parent.prototype);
+        child.prototype.constructor = child;
+    }
+    // creating a dinosaur object
+    function Dinosaur(){
+        // this.height= 14;
+    }
+    // creating a prototype function of Dinosaur
+    Dinosaur.prototype.get_val = function(){
+        return this.power;
+    }
+    //creating a constructor function 
+
+    var Titanosaurex = function(power){
+        this.power = power;
+    }
+    var Spinosauras = function(power){
+        this.power = power;
+    }
+    common_inherit(Dinosaur,Titanosaurex);
+    common_inherit(Dinosaur,Spinosauras);
+     
+     var Dino1 = new Titanosaurex("fast");
+     var Dino2  = new Spinosauras("spines");
+     console.log(Dino1.get_val());
+     console.log(Dino2.get_val());
+     console.log(Dinosaur.prototype);
+</script>
+<script>
+    // need to understand
+    function Parent() { /* ... */ }
+function CreatedConstructor() {
+   Parent.call(this)
+}
+
+CreatedConstructor.prototype = Object.create(Parent.prototype)
+// CreatedConstructor.prototype.constructor = CreatedConstructor // sets the correct constructor for future use
+
+CreatedConstructor.prototype.create = function create() {
+  return new this.constructor()
+}
+
+new CreatedConstructor().create().create() // TypeError undefined is not a function since constructor === Parent
+</script>
+<script>
+function aa(color){
+    this.color = color;
+}
+function bb(color, price){
+    aa.call(this, color);
+    this.price = price;
+}
+bb.prototype = Object.create(aa.prototype);
+bb.prototype.constructor = bb;
+ var cc = new bb("red");
+ console.log(cc.price);
+ console.log(cc.color);
+</script>
+
+<script>
+    // Mixing or compositing
+    // here we are defining different features for different Robots,
+    // some robot can only walk, and , some robots can both walk and talk...like this
+    function mixin(target , ...features){
+        Object.assign(target, ...features)
+    }
+    var eating = {
+        eat: function(){
+            return "I can eat <br>";
+        }
+    };
+
+    var walking = {
+        walk: function(){
+            return "I can walk <br>";
+        }
+    };
+    var talking = {
+        talk: function(){
+            return "I can talk <br>";
+        }
+    };
+    var looking = {
+        look: function(){
+            return "I can look<br>";
+        }
+    };
+    // Now we are assigning different above properties or features to the below robot
+    var Robot = Object.assign({}, talking , looking)
+    console.log(Robot.talk());
+    console.log(Robot.look());//this are the properties or features which are assigned to the Robot
+    console.log(Robot.walk());//this is the property which is not assigined to the robot, so this will show an error
+
+    var Human = function(){}
+    // Compositing features to human
+    Object.assign(Human.prototype,eating ,talking)//assignning the features  to the prototype of Human object
+    var Rahul = new Human();//assigning Human object and its features to the rahul
+    //  Another way of assigning features to human
+    mixin(Human.prototype, looking , walking, talking)//here "target" is the Human.prototype and ""...features" are the walking, looking etc.,
+</script>

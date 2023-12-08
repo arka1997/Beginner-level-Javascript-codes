@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let name = {
+        firstname: "debanjan",
+        lastname: "sarkar",
+    }
+    let printFulName = function (age){
+        console.log(this.firstname + " " + this.lastname + " " + age);
+    }
+    printFulName.call(name, 23);//this printFullName function directly call the name object
+
+    printFulName.apply(name, [227]);
+    // bind method binds the function object with another object, and returns the copy of the method to be used later, and whenever needed, we just call it.
+    let printBindName = printFulName.bind(name, 45);//this bind function is creating a copy of the "printFullName" function
+    console.log(printBindName);
+    printBindName();
+</script>
+<script>
+let animals = {
+  // add property
+  domesticAnimals: ["cat", "dog", "cow", "goat", "sheep", "donkey", "pig", "horse"],
+  // add method
+//   arrow functions can never be a method, otherwise it will return a window object
+//   printdomesticAnimals:  () => { //so instead of using arrow as a method, we use our general function method
+    printdomesticAnimals: function () {
+         console.log("inside printdomesticAnimals", this);
+    // print after 3 seconds
+    setTimeout( () => {
+      console.log("inside setTimeout", this);
+    }, 3000);
+  },
+};
+animals.printdomesticAnimals();
+</script>

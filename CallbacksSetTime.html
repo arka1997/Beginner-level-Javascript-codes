@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Array containing object and function Example:
+    let arr = ["red","yellow","{name:deba,age:29}","function(){}""]
+
+
+</body>
+
+</html>
+<script>
+    // CALLBACKS DEMO \\
+    // Object containg array:
+    let Cakefactory = {
+        items:         ["flour", "Grinded Biscuit"],
+        CrushedFruits: ["ornage", "mango", "pineapple"],
+        creamFlavour:  ["chocolate", "vanilla", "strawberry"],
+    };
+   
+    let order = (items, calbck) => {
+        setTimeout(() => {
+            let b=calbck(items);
+            console.log(b);
+           console.log("hi");
+           for(var l=0;l<10000;l++){
+               console.log(l);
+           }
+        }, 0000);
+        setTimeout(() => {
+            let calbckFunc = (items) => {
+        console.log("Production has started");
+        setTimeout(() => {
+            console.log(`You choosed ${Cakefactory.items[0]} for your ${items}`);
+            for(var j=0;j<8;j++){
+                console.log(j);
+            }
+            return 5;
+            // setTimeout(() => {
+            //     console.log(`You choosed ${Cakefactory.CrushedFruits[1]} for your ${items}`);
+            //     setTimeout(() => {
+            //         console.log(
+            //             `You choosed ${Cakefactory.creamFlavour[2]} for your ${items}`);
+            //     }, 5000);
+            // }, 4000);
+        }, 3000);
+        console.log("fuck");
+    }
+                    console.log("You choosed");
+                }, 0000);
+                for(var i=0;i<1000;i++){
+               console.log("x");}
+               for(var m=0;m<1000;m++){
+               console.log("y");}
+               for(var n=0;n<3000;n++){
+               console.log("z");
+           }
+    }
+
+    var option = prompt("press 1 for cake nd 2 for pastry");
+    if (option == "1") {
+
+        order('Cake', calbckFunc);
+    } else {
+        // order('Pastry' , calbckFunc);
+        console.log("pastry not available");
+    }
+</script>
+<script>
+    const radius = [2,4,6,8];
+    var output = [];
+    const calculateArea = function(radius){
+        for(var i= 0; i<radius.length; i++){
+            output.push(Math.PI * radius[i] * radius[i]);
+        }
+        return output;
+    }
+    var output1 = [];
+    const calculateCircumference = function(){
+        for(var j=0; j<radius.length ; j++){
+            output1.push(2*Math.PI * radius[j]);
+        }
+        return output1;
+    }
+    console.log(calculateCircumference(radius));
+    console.log(calculateArea(radius));
+    </script>
+<script>
+    const radius2 = [1,3,5,7];
+    var output3 = [];
+    const area = function(radius){
+        return Math.PI * radius * radius;
+    }
+    const circumference = function(radius){
+        return 2 * Math.PI * radius;
+    }
+    // this below code is a higher order function a whole replacement of map function
+    const func1 = (radius2,logic) => {
+        
+        for(var k=0; k<radius2.length ; k++){
+            output3.push(logic(radius2[k]));
+        }
+        return output3;
+    }
+    // upto here
+    console.log( func1(radius2,area));
+    console.log( func1(radius2,circumference));
+</script>
+<script>
+      const arr = [12,5,13,2];
+    var output3 = [];
+
+    // this is one call back function
+    const mapArea = function(val){
+        return Math.PI * val * val;
+    }
+    // this below code is a whole replacement of map function
+    // and using arrow function, we cannot use this, because it points to the global context unless assigned or bind to its parent element
+    // console.log("using arrow function where this points to window object as it has no 'this' present inside it like normal function has, so cannot point to the parent object unless its assigned like a variable to the parent, or bind to the parent");
+    Array.prototype.protofunc = (logic) => {
+        console.log(this);
+        for(var k=0; k<arr.length ; k++){
+            output3.push(logic(arr[k]));
+        }
+        return output3;
+    }
+    //  OR \\
+    console.log("using normal function where 'this' points to array");
+    Array.prototype.protofunc = function(logic){
+        console.log(this);//here this points to the global object, because the array named "arr" is not bined to it, and
+        // arrow function points to the parent element when it is binded to the parent
+        for(var k=0; k<this.length ; k++){
+            output3.push(logic(this[k]));
+        }
+        return output3;
+    }
+    console.log('Use of map function just to calculate area instead of passing callbacks and all')
+    console.log(arr.map(mapArea));
+    console.log(arr.protofunc(mapArea));
+</script>
+<script>
+    function greeting() {
+  console.log('Hello World');
+}
+// Invoking the function
+greeting();  // prints 'Hello World'
+greeting.lang = 'English';
+// Prints 'English'
+console.log(greeting.lang);
+</script>

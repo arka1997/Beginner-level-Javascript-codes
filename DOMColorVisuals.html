@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Document</title>
+    <style>
+        body{margin:0;
+        width:500px}
+
+        div {
+            display: flex;
+            margin: .5rem;
+            padding: 1rem;
+            border:1px solid black;
+            min-height: 1rem;
+            flex-grow: 1;
+        }
+        .grandparent{
+            background-color: red;
+            flex-direction: column;
+        }
+        .parent{
+            background-color: blue;
+        }
+        .child{
+            background-color: rgb(187, 252, 89);
+        }
+    </style>
+</head>
+<body>
+    <p id="bb" title="good">dscdsf</p>
+    <div class="grandparent">
+        <div class="parent" >
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+        <div class="parent">
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+    <!-- adding nav elements to this ul elements -->
+    <ul id="menu">
+    </ul>
+<!-- adding array elements to document frag ad later appending it to the parent div -->
+    <ul id="menu2">
+    </ul>
+    <h2 id="myH2">My Header</h2>
+    <span id="change" style="color:red">My span</span>
+    <p>Click the button to insert the red span before the header:</p>
+    <button onclick="myFunction()">Move span</button>
+</body>
+</html>
+<script>
+console.log("creating a text node and appending it to the grandappend element");
+    var grandappend = document.querySelector(".grandparent");
+    var grand = document.createTextNode("Grandparent");
+    grandappend.appendChild(grand);
+
+console.log("creating text node and appending it to parent elemnt and changing its color");
+    var parentappend = Array.from(grandappend.children);
+    console.log(parentappend);
+    var c = parentappend[0].children;
+    console.log(c[0]);
+    parentappend.forEach(myfunc);
+    function myfunc(item,index){
+        var parent = document.createTextNode("Parents");
+
+        item.style.backgroundColor = "rgb(112, 206, 250)";
+        console.log(item.appendChild(parent));
+    }
+    // Another way to create this node  \\
+    // var parentappend2 = Array.from(document.querySelectorAll(".parent"));
+    // for(var i=0;i<parentappend2.length;i++){
+    //     console.log(parentappend2[i]);
+    //     console.log(parentappend2[i].appendChild(parent));
+    // }
+
+console.log("creating text node and appending it to child elements");
+    var clr = document.querySelectorAll(".child");
+    clr.forEach(myfun);
+    function myfun(i,index){
+    var childs = document.createTextNode("children");
+    console.log(i.appendChild(childs));
+    }
+</script>
+<script>
+    
+    var child = document.querySelector(".child");
+    var parent = child.parentElement;
+    console.log(parent);
+    var grand = parent.parentElement;
+    console.log(grand);
+</script>
+<script>
+    var arr= ["HOME","SERVICE","CONTACT"];
+    var selector = document.querySelector("#menu");
+    console.log(selector);
+    arr.forEach(navappend);
+    function navappend(nav_item){
+        var create = document.createElement("li");
+        create.textContent = nav_item;
+        selector.appendChild(create);
+    }
+</script>
+<script>
+    console.log("an example document fragment where  we are doing necessary changes in document ")
+    var bb = document.querySelector("#menu2");
+    arr = ['tuban','deba'];
+    var frag = document.createDocumentFragment(); // or frag = new DocumentFragment()
+    arr.forEach(myfunc3);
+    function myfunc3(value){
+        li = document.createElement('li');
+        li.innerHTML =value;
+        frag.appendChild(li);
+    }
+    bb.appendChild(frag);
+    console.log(bb);
+</script>
+<script>
+    let menu = document.getElementById('menu');
+    // create a new li node
+    let childli = document.createElement('li');
+    childli.textContent = 'Home';
+
+    // insert a new node before the first list item
+    // childi is the new node to be inserted
+    // menu.lastelemntChild is together called the reference node before which the NewNode is inserted
+    // parentNode is the parent of newly inserted node. Here menu is the parent node .
+    menu.insertBefore(childli, menu.lastElementChild);
+    // The helper function of insertBefore() is:
+    // function insertBefore(newNode , existingNode){
+    //     existingNode.parentNode.insertBefore(newNode , existingNode);
+    // }
+
+    
+</script>
+<script>
+    // targetElement.insertAdjacentElement("position",element);
+    // where positions are:
+    // "beforebegin": Before the element itself
+    // "afterbegin":just inside the element before its first child
+    // "beforeend"  : Just inside the elemnent, after its last child
+    // "afterend"  : After the element itself
+    // element - the element to be inserted into the tree
+    function myFunction(){
+        var child = document.querySelector("#myH2");
+        var parent=document.querySelector("#change");
+        child.insertAdjacentElement("beforebegin",parent);
+        // OR  \\
+        child.insertAdjacentHTML("afterend","<P>HELLOW SIR, GOODMORNING</P>");
+    }
+</script>
+<script>
+    var nn = document.getElementById("myH2");
+    var xx = nn.firstChild;
+    console.log(xx);
+    var xx = nn.firstChild.length;
+    console.log(xx);
+
+    nn.firstChild.appendData("::Has been added with external data");//external data is appended to the inserted data inside an elemnt
+    nn.firstChild.insertData(2 , "::another data inserted::");
+</script>

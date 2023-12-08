@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+    $('tr:odd').click(function(){
+        $(this).css("background-color","red");
+    });
+});
+//Use of Hover
+$(document).ready(function(){
+  $("#cc").hover(
+      function(){
+      $(this).css("background-color", "lightgray");
+  },
+  function(){
+      $(this).css("background-color", "red");
+  });
+});
+
+//Use of on click event
+  $(document).ready(function(){
+      $("#cc").on("click",function(){
+          $(this).css("background-color", "green");
+      });
+  });
+
+//to add multiple events with "on"
+$(document).ready(function(){
+    $("#dd").on({
+        mouseenter: function(){
+            $(this).css("background-color","blue");
+        },
+        click: function(){
+            $(this).css("background-color","purple");
+        },
+
+    });
+    });
+//toggle a text
+$(document).ready(function(){
+    $("#ff").click(function(){
+        $("#ee").toggle(1000);//toggling is set to a timer of 1 sec, syntax: toggle(speed,callback function)
+    });
+});
+</script>
+<script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+        $("#div1").fadeToggle();
+        $("#div2").fadeToggle("slow");
+        $("#div3").fadeToggle(3000);
+
+        });
+    });
+
+
+    //difference between click and focus
+    //click will continous count the no of click as many times we click the input text box,
+    //whereas focus is when we focus a text box,by clicking it,and then we try to click on it it will not count the no of times clicked, unless we click on somewhere else and then we click on the focussed input 
+    $(document).ready(function(){
+    $('#birthday_y').click(function() {
+  console.log("clicked")
+  if (!$(this).val()) {
+    $(this).val('1980');
+  }
+});
+$('#birthday_x').focus(function() {
+    console.log("focused")
+    if (!$(this).val()){
+        $(this).val('1980');
+    }
+});
+    });
+
+    $(document).ready(function(){
+        $("#flip").click(function(){
+        $("#panel").slideToggle("slow");
+        });
+    });
+
+    $(document).ready(function(){
+        $("#gg").click(function(){
+            var div=$("div");
+            div.animate({
+                height: '200px',
+                opacity : '0.4'
+            },"slow");
+            div.animate({height: '100px', opacity: '0.8'}, "slow");
+        });
+        });
+
+</script>
+<style>
+  #panel, #flip {
+  padding: 5px;
+  text-align: center;
+  background-color: #e5eecc;
+  border: solid 1px #c3c3c3;
+}
+
+#panel {
+  padding: 50px;
+  display: none;
+}
+</style>
+</head>
+<body>
+    <input id="birthday_y">
+    <input id="birthday_x">
+<div id="flip">Click to slide</div>
+<div id="panel">hellow slider</div>
+
+
+<h1 id="cc">Welcome to My Web Page</h1>
+<p id="dd">Multiple Events with ON</p>
+<p id="ee">Show and hide a html element with single button</p>
+<button id="ff">toggle</button>
+<button id="btn">Fadetoggle</button>
+
+<!-- the option callback in fadetoggle function is executed after the function completes the other function like toggling SYNTAX: $(selector).fadeTo(speed,opacity,callback) -->
+
+<!-- By default, jQuery comes with queue functionality for animations.
+
+This means that if you write multiple animate() calls after each other, jQuery creates an "internal" queue with these method calls. Then it runs the animate calls ONE by ONE.
+
+So, if you want to perform different animations after each other, we take advantage of the queue functionality: -->
+
+<button id="gg">Animate</button>
+
+<div id="div1" style="width:80px;height:80px;background-color:red;"></div>
+<br>
+<div id="div2" style="width:80px;height:80px;background-color:green;"></div>
+<br>
+<div id="div3" style="width:80px;height:80px;background-color:blue;"></div>
+
+
+<table border="1">
+  <tr>
+    <th>Company</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Berglunds snabbköp</td>
+    <td>Sweden</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Ernst Handel</td>
+    <td>Austria</td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>UK</td>
+  </tr>
+</table>
+
+</body>
+</html>

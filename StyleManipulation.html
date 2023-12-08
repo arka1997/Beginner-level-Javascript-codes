@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .myclass1{
+            font-style: italic;
+            background-color: red;
+        }
+        .myclass2{
+            background-color: rgb(89, 0, 255);
+        }
+    </style>
+</head>
+<body>
+    <p id="myp" class="myclass1" style="color: yellowgreen; background-color: aqua;">bxcbxc</p>
+</body>
+</html>
+<script>
+    var p = document.getElementById("myp");
+    var allCSSProp = window.getComputedStyle(p);//for manipulating internal and external CSS
+    var cs=p.style;//for manipulating inline CSS
+    console.log(cs.fontStyle);//this will show error ecause we are using var cs, which is pointing to an inline style, is being used here to point some internal style outside,
+    // but we can assign values using "var cs" to modify internal css
+    console.log(allCSSProp.fontStyle);// allCSSProp is pointing to all the CSS both internal and external, so we can use this to manipulate the CSS which are define outside the body , termed as internal or external style sheet
+
+</script>
+<script>
+    var p = document.getElementById("myp");
+    console.log(p.style);
+    console.log(p.style.cssText);
+    p.style.cssText = "font-size: 70px;";
+</script>
+<script>
+    var p = document.getElementById("myp");
+    p.className = "myclass2";
+    console.log(p);
+</script>
+<script>
+    var p = document.getElementById("myp");
+    var elem = p.classList;
+    console.log(elem.length);
+    console.log(elem.value);
+    console.log(elem.item(0));
+    console.log(elem.replace("myclass2","myclass1"));//replacing the first class with second class
+    // p.style.removeProperty('background-color') ;
+</script>
+<script>
+    const companies = [
+        {name: "deba", age:21 , place: "jirat"},
+        {name: "tubla", age:42 , place: "tribeni"},
+        {name: "abhi", age:34 , place: "rishra"},
+        {name: "ayan", age:12 , place: "DGA"},
+        {name: "bani", age:56 , place: "rishra"},
+        {name: "dilip", age:61 , place: "hooghly"},
+    ]
+    // for each value of the index items in the array we have parameters already declare for retruning the below items:
+    // comp will return values of each index,
+    // index parameter returns only the index numbers
+    // company will return the whole array everytime this loop is running
+    
+    // below program to find the name whose age is below 30
+    var newarr = [];
+    companies.forEach(function(comp,index,company){
+        if(comp.age<=30)
+        newarr.push(comp.name);
+    });
+    console.log(newarr);
+
+    // Now using filter method to acccomplish the previous task
+    var newarr2 = [];
+    var arrayval = companies.filter(varAge => varAge.age <= 30);
+    console.log("value of 0th index after filtering the age: "+arrayval[0].name);
+    console.log("This is the array obtained after filterling the main array with ages <=30: ");
+    console.log(arrayval);
+    console.log("now we are running a foreach loop using the filtered array and getting the name with ages<=30 and pushing them into a new array");
+    arrayval.forEach(age => newarr2.push(age.name));
+    console.log(newarr2);
+</script>
+<script>
+    var bb = companies.filter(placeVal => {if(placeVal.place ==='rishra') return true;});
+    console.log(bb);
+</script>
+<script>
+    // Map examples
+    const peoplename = companies.map(comp3 => {return `${comp3.name} [${comp3.age}]}`});
+        console.log(peoplename);
+        const anotherVal = peoplename.map(comp4 => {return comp4+"hii"});
+        console.log(anotherVal);
+</script>

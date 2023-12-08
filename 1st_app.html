@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+      <p id="demo">hjfhjhhjf</p>
+      <script>
+        class animal{//declaring class
+          constructor(name){
+            this.name = name;
+          }
+          present(){//creating a method named present
+            return 'I am a'+" "+this.name;
+          }
+        }
+        class xy extends animal{
+          constructor(name1,name2){
+            super(name2);//this super keyword will inherit the methods of parent class
+            this.name1=name1;
+          }
+          show = (val) => {//arrow function
+            return this.name1+" "+this.present()+" "+val;
+          }
+
+
+        }
+        king=new xy("lion","tiger"),
+        document.write(king.show("goat"));
+      </script>
+    </body>
+  </html>

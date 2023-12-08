@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .democlass {
+          color: red;
+        }
+        </style>
+</head>
+<body>
+    <ul id="menu">
+        <li class="item">HTML</li>
+        <li class="item">CSS</li>
+        <li class="item highlight">JavaScript</li>
+        <li class="item">TypeScript</li>
+    </ul>
+
+    <h1 class="democlass">Hello World</h1>
+
+<p id="demo">Click the button to remove the class attribute from the h1 element.</p>
+
+<button onclick="myFunction()">Try it</button>
+    <div id="bb"><h1>Hello boy</h1></div>
+</body>
+</html>
+<script>
+    // var createnode = document.createElement("h1");
+    // console.log(createnode);
+    function myFunction(){
+    var remove = document.getElementsByClassName("democlass");
+    console.log(remove);
+    remove.removeAttribute("class");
+    }
+</script>
+<script>
+    var menu = document.getElementById('menu');
+    var items = menu.getElementsByClassName('item');
+    console.log(items);
+    var data = Array.prototype.map.call(items, b => b.textContent);
+
+console.log(data);
+</script>

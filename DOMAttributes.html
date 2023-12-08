@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="test" type="non-standard property">
+    <div id="demo" class="demo" model= "ASUS ROG">
+        <h1 class="cde">wedwe</h1>
+    </div>
+    <div class="ff"></div>
+</body>
+</html>
+<script>
+    // ATTRIBUTES \\
+    // CREATING our own properties for document, document contains many inbuilt properties like appendChild()
+    // but here we are creating our own properties
+    document.body.func1 = {
+        color: 'red',
+        height: 45,
+    };
+    console.log(document.body.func1.color);//here we wrote document.body instead of writing only documnent because we are creating our functions or properties which will be used inside the body and not in the whole document
+
+    console.log('The "Element" object provides many built in functions for manipulating the DOM elements,like EX. element.classList.toggle("mystyle"), WHEREAS,  Element.prototype are prototype object where we can add our own new methods to all elements');
+
+    Element.prototype.func3 = function(){
+        console.log( `Hello! I am ${this.tagName}`);
+    };
+    document.documentElement.func3(); // Hello, I'm HTML
+    document.body.func3(); // Hello, I'm BODY
+</script>
+<script>
+    console.log(document.body.id);
+    console.log(document.body.type);//showing undefined because this is not inbuilt property, it's a property created by the coder called non-standard 
+    // Now to get the key and the value of self made attribute, we can use
+    console.log(document.body.getAttribute("type"));
+</script>
+<script>
+    let bb=document.querySelector('div');//fetching div element
+    console.log(bb.id);
+    console.log("get_model"+demo.getAttribute('model'));//here shows undefined as we are trying to get an attribute which is not present
+    demo.setAttribute('color', 123);
+    console.log(demo.outerHTML);
+    for(let attr of demo.attributes){
+        console.log( `${attr.name} = ${attr.value}` );
+    }
+</script>
+

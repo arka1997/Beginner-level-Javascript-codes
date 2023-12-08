@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <tr><td class="b">
+        <label>Select your age group</label><br>
+        <input type="radio" name="radio" id="radio" value="18-25" checked>18-21<br>
+        <input type="radio" name="radio" id="radio" onclick="disable()" value="25-30"> 25-30<br>
+        <input type="radio" name="radio" id="radio" value="30-35">30-35<br>
+        <input type="radio" name="radio" id="radio" value="35-40">35-40<br>
+        <input type="radio" name="radio" id="radio" value="40-45">40-45<br>
+        <input type="radio" name="radio"id="radio" onclick="selectb()" value="45 and above">45 and above
+        <span id="radioo"></span>
+    </td></tr>
+    <tr><td class="b">
+        <label>Select your skills</label><br>
+        <input type="checkbox" class="check" name="java">java<br>
+        <input type="checkbox" class="checkId" name="html">html<br>
+        <input type="checkbox" class="check" name="css">css<br>
+        <input type="checkbox" class="check" name="javascript">javascript<br>
+        <input type="checkbox" class="check" name="bootstrap">bootstrap<br>
+        <input type="checkbox" class="check" name="php" checked>php<br>
+        <span id="checkk"></span>
+    </td></tr>
+    <p id="demo"></p>
+    
+    <button type="submit" onclick="preview()">btn</button>
+</body>
+</html>
+<script>
+    function selectb(){
+    var current = document.getElementsByClassName("check");
+    console.log(current);
+    for(var i=0;i<current.length;i++){
+        // document.getElementsByClassName("check")[i].checked = false;
+        var b = document.getElementsByClassName("check")[i].checked = false;
+        console.log(b);
+    }
+    document.getElementsByClassName("checkId")[0].checked = true;
+}
+
+</script>
+<script>
+    class mouse{
+        constructor(){
+            // Instance member
+            this.feature = 'wireless';
+        }
+        show(){
+            // prototype member
+            return this.feature + "Price 300";
+        }
+    }
+    var dell = new mouse();
+    console.log(dell);
+</script>
+<script>
+    class Father{
+        constructor(){
+            this.SMoney = 2000;
+        }
+        showFmoney(){
+            return this.SMoney + "Father money";
+        }
+    }
+        class Son extends Father {
+            constructor(money){
+            super(money);//super is used to call the parent class ad its constructor
+            this.a = 12;
+            }
+            showSmoney(){
+                return "Son money";
+            }
+        }
+        var bb = new Son(55678);
+        console.log(bb.showFmoney());
+        console.log(bb.showSmoney());
+</script>
+<script>
+    class cc{
+        static func1(){
+            return "hii alexa";
+        }
+    }
+        console.log(cc.func1());
+</script>
+<script>
+    // creating multidimensional array (Part 1)
+    var rows = 4;
+    var col = 3;
+    var geek = new Array(rows);
+    // document.write(geek+"c");
+    for(var i =0;i<rows;i++){
+        geek[i] = new Array(col);
+        document.write(geek[i]+"b");
+    }
+    for(var i =0;i<rows;i++){
+        for(var j =0;j<rows;j++){
+            // document.write(geek[i][j]);
+        }
+    }
+</script>
+<script>
+    // creating multidimensional array (Part 2)
+    var rows = 4;
+    var col = 3;
+    var geek = [];
+    for(var i =0;i<rows;i++){
+        geek[i] = [];
+        document.write(geek[i]+"f");
+    }
+    for(var i =0;i<rows;i++){
+        for(var j =0;j<rows;j++){
+            document.write(geek[i][j]);
+        }
+    }
+</script>
+<script>
+    // Both the methods are used to add elements to the array. But the only difference is unshift() method adds the element at the start of the array whereas push() adds the element at the end of the array.
+    //Shift() and pop() methods are used to remove an element from an array. ... The method shift() is used to remove the first element from an array, whereas the pop() method is used to remove the last method from the array.
+</script>
+<script>
+    var bb = new Date();
+    console.log(bb);
+    var day = bb.getDay();
+    var month = bb.getMonth();
+    
+    console.log(day);
+    console.log(month);
+    console.log(func1(day));
+    function func1(day){
+    var retday= ['sunday','mon','tue','wed','thu','fri','sat'];
+    return retday[day];
+    }
+    console.log(func2(month));
+    function func2(month){
+    var retmonth= ['jan','feb','mar','apr','may','june','july','aug','sept','oct','nov','dec'];
+    return retmonth[month];
+    }
+</script>
+<script  src="scriptt.js"></script>

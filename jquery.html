@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("p").click(function(){ //$('selector').action() selector is used to select or find html elements
+        $(this).hide();
+    });
+    $("h1").click(function(){ //$('selector').action() selector is used to select or find html elements
+        $(this).hide();
+    });
+});
+</script>
+<script>
+
+$(document).ready(function(){
+    $('button').click(function(){
+        $("p:first").hide();
+        $("[href]").hide();
+    });
+    
+});
+</script>
+</head>
+<body>
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<h1 class="bb">Click me too!</p>
+<button>click</button>
+<a href="#">Link</a>
+</body>
+</html>

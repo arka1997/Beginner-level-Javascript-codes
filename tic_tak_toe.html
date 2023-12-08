@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                
+                background-color: aqua;
+                border: 0px solid rgb(30, 194, 98);
+            }
+            .container{
+                display: flex;
+                flex-wrap: wrap;
+                background-color: azure;
+                width:246px;
+            }
+            .gg{
+                width: 80px;
+                height: 80px;
+                text-combine-upright: center;
+                border: 1px solid rgb(30, 194, 98);
+                
+            }
+        </style>
+    </head>
+        <body>
+            <!--<img src="cross.jpg" style="visibility:hidden"; id="go"></img>-->
+            <div class="container" id="container">
+                <div id="row">
+                <div class="gg">1</div>
+                <div class="gg">2</div>
+                <div class="gg">3</div>
+                </div>
+                <div id="row">
+                <div class="gg">4</div>
+                <div class="gg">5</div>
+                <div class="gg">6</div>
+                </div>
+                <div id="row">
+                <div class="gg">7</div>
+                <div class="gg">8</div>
+                <div class="gg">9</div>
+                </div></div>
+                <p id="timer_time" >00:00</p>
+                <button id="timer_button" onclick="timer_button()" >timer</button>
+                <!--<button id="timer_button">timer2</button>-->
+            
+            <script>
+             let count=1;
+             function getRandomclr()
+             {
+             var letters='0123456789ABCDEF';
+             var color = '#';
+             for(var i=0; i< 6; i++){//loop is adding the numbers generated one by one, ex, #130ABC, 6 digit
+                 color += letters[Math.floor(Math.random() * 16)];//To get a number, for example between 0 and 10, multiply your answer by 10: Math.random() * 10 To get it to be a whole number, i.e. an integer, apply Math.floor, which rounds down to the nearest whole number: Math.floor(Math.random() * 10) To get a whole number between 1 and 10
+                 //console.log(color)
+             console.log(letters[Math.floor(Math.random()*16)]);
+             }
+
+             return color;
+             }
+             function changeBackground(callback){
+                document.getElementById("container").style.backgroundColor=callback();
+             };
+                function timer_button(){
+                
+                    let curnt= document.getElementById("timer_time").innerHTML; //here "00:00" is a String,which is obtained from the document
+                    let min=parseInt(curnt.split(":")[0]);//here split function splits the "00:00", into two halves, storing thr first half in [0]= 00,
+                    let sec= parseInt(curnt.split(":")[1]);//here the portion after ":" is stored in 2nd half in [1]=00 ,parseInt used to convert string to integer
+                    //curnt=min*60+sec;
+                    //curnt =curnt + 1;
+                    //min=Math.floor(curnt/60);
+                    //sec=curnt%60;
+                    sec+=1;// sec is incremented by 1
+                    if(sec>=60) //if sec greater then 60, then increment min by 1, & set sec to zero,
+                    {
+                        sec=0;
+                        min+=1;
+                    }
+                    
+                    curnt = min.toString().concat(":").concat(sec.toString());// here the min and second obtained are again converted to string
+                    console.log(curnt);
+                    document.getElementById("timer_time").innerHTML=curnt;//here it is stored and returned to the document after updating the min and second values
+                    //var x=getRandomclr;
+                    //x();
+                    //      OR
+                    changeBackground(getRandomclr);
+                    if(count < 10)//here timer will run upto 10 sec
+                   {
+                    var timer =setTimeout(timer_button, 1000);//settimeout functions calls after every one sec, to increase the time after every one second
+                    count++;
+                   }
+                }
+                // document.getElementById("timer_button").addEventListener('click' , function(){
+                //     timer_button();
+                //})  //addevent listener, means it will create an event or occassion or purpose when the element with id=timer-button, is clicked, and the function is performed just next to it.
+               
+                //PART 2
+                // document.getElementsByClassName("gg")[3].addEventListener('click' , function(){//here the "cross" image only applied on the second row->1st column
+                //     console.log(1 === 1);
+                //     document.getElementsByClassName("gg")[3].style.backgroundImage = "url('cross.jpg')";
+                //     document.getElementsByClassName("gg")[3].style.backgroundSize = '100% 100%';
+                // })
+                //callback is a fucntion => if you a pass a function to another function
+                //event => user interaction with our websites, when something is touched or click, an event occurs
+            //step 1: In an event, Finding the nodes or path from top to bottom finding the place where the clicked has happen, it goes as, body->container -> gg, and in "gg" we call the event listeners this is called event propogation
+            //Step 2: once propogation is done, then we go back bottom to top in the same pathe from gg -> conatiner -> body, and then we call the event listeners after reaching body, this is called event bubbling
+            //Code as proof
+            document.getElementById("container").addEventListener('click', function(){
+                console.log("I am in container")
+                //e.stopPropagation()
+            }, true)
+                document.getElementById("row").addEventListener('click', function(){
+                console.log('I am in row')
+                })
+                document.getElementsByClassName("gg")[0].addEventListener('click', function(){
+                console.log('I am in gg')
+            })
+            
+            
+            </script>
+            <script src="tic_tac_toe.js"></script>
+        </body>
+</html>

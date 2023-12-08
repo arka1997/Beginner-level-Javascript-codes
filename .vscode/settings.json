@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "c:\\Windows\\py.exe",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "liveServer.settings.port": 5501
+}

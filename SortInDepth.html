@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const companies = [
+        {name: "deba", age:21 , place: "jirat"},
+        {name: "tubla", age:42 , place: "tribeni"},
+        {name: "abhi", age:34 , place: "rishra"},
+        {name: "ayan", age:12 , place: "DGA"},
+        {name: "bani", age:56 , place: "rishra"},
+        {name: "dilip", age:61 , place: "hooghly"},
+    ]
+    const sortedCompany = companies.sort(function(a,b){
+        if(a.age > b.age){
+            console.log(a.age+" "+b.age);
+            return 1;
+        }
+        else{
+            document.write("n="+a.age+" "+b.age+"<br>");
+            return -1;
+        }
+    });
+    console.log(sortedCompany);
+</script>
+<script>
+    // Localstring returns a postive or negative number
+    // 2.localCompare(3) returns (-1) because (2) falls before (3) and returns (+1) when 3()) is compare to (2)
+    const arr=[3,1,8,5,7];
+     var sortedComp = (a,b) => {
+         var bb = a.toString().localeCompare(b.toString());
+         console.log(bb);
+         return bb;
+     };
+     var bv = arr.sort(sortedComp);
+     console.log(bv);
+</script>
+<script>
+    // The localeCompare() method returns a number indicating whether a reference string comes before, or after, or is the same as the given string in sort order.
+    const val1 = 'réservé'; // with accents, lowercase
+const val2 = 'RESERVE'; // no accents, uppercase
+
+console.log(val1.localeCompare(val2));
+// expected output: 1
+console.log(val1.localeCompare(val2, 'en', { sensitivity: 'base' }));
+// expected output: 0
+
+</script>
+<script>
+    var places = ["first", "second", "third", "fourth"];
+var [a, b, , d] = [f, ...rest] = places;
+
+console.log(a); //Output: first
+console.log(d); //Output: fourth
+console.log(f); //Output: first
+console.log(rest); //Output: ["second", "third", "fourth"]
+</script>
+<script>
+    // Insertion sort is being carried on over here with O(n^2) complexity
+    console.log("Insertion sort");
+    const sort = (arr, comparefn) => {  //comparefn parameter contains a function as a parameter which will called at every step by the second loop for returning positive or negative values
+  for (let i = 1; i < arr.length; i++) {
+    for (let j = i; j && comparefn(arr[j-1], arr[j]) > 0; j--) { //here comparefn function contains two vallues of array which calls the comparefn parameter, and in that parameter we have already passed a function in it which will return positive or negative values, on the basis of which we will do ascending or descending
+      [arr[j], arr[j-1]] = [arr[j-1], arr[j]];
+    }
+  }
+};
+
+const array = [3, 0, 4, 5, 1, 2];
+// sort(array, (a, b) => a - b);
+
+sort(array , function comparefn(a,b){ return a-b;} )//for ascending
+console.log("" + array);
+
+sort(array, (a, b) => b - a);
+console.log("" + array);
+
+const objArray = [{id: "c"}, {id: "a"}, {id: "d"}, {id: "b"}];
+sort(objArray, (a, b) => a.id.localeCompare(b.id));//this is for string sorting
+console.log(JSON.stringify(objArray, null, 2))
+</script>
+<script>
+    // MERGE sort is used for the below code for sorting numbers with (log n) complexity
+    const numbercompare = (a,b) => {
+        return a-b;
+    }
+    function merge(left, right , mergearr){
+        if(mergearr == undefined){
+            mergearr = defaultCompare;
+        }
+        var l,r;
+        const result = [];
+        while(left.length > 0 && right.length > 0){
+            if(mergearr(left[0],right[0])<0){
+                [l, ...left] = left;//this will store the first elemnt in the variable l, and the rest of the elements of the array is stores in the "...left", this is knowns as array destructuring
+                result.push(l);
+            }
+            else{//for storing the smaller ones out of two everytime
+                [r, ...right] = right;
+                result.push(r);
+            }
+        }
+        return result.concat(left).concat(right);
+    }
+    Array.prototype.mysort = function(mergearr){
+        console.log(this.length);//here this points to the array becuse we have called this function with arr1.mysort(), where arr1 is the object which is calling the mysort() function, and we know this always points to the current object, which ise here, the ARRAY
+        if(this.length <=1){
+            return this;
+        }
+        const half = Math.ceil(this.length/2);
+        const left = this.slice(0,half);//this is the array, and we sliced the array from zero to hlaf
+        const right = this.slice(half);
+        return merge( //now here we are calling the merge function with three parameters, first is the left array, second is the right array, and third is the comparator value which returns either positive or negative values
+            left.mysort(mergearr),
+            right.mysort(mergearr),//here we are sending the mergearr comparation function as parameter to mysort
+            mergearr
+        )
+    }
+    const arr1 = [4,1,8,23,18,15];
+    const sortedarr = arr1.mysort(numbercompare); //here numbercompare is a function name which we are sending as a parameter to the mysort function
+    console.log("merge sort");
+    console.log(sortedarr);
+</script>
+<script>
+    const _mergeArrays = (a, b) => {
+  const c = []
+
+  while (a.length && b.length) {
+    //   for a=[5,6,7] and for b=[1,9,10]
+    // a[0]=5 > b[0], then b.shift will remove the first elemnt from arr2, and now array becomes b=[9,10], and the shifted value (here 1) is stored in the c array, again,
+    // now a=[5,6,7] and b=[9,10],
+    //  a[0]=5 > b[0], condition false => a.shift occurs => and (a[0]=5) stored in c array =>now array becomes =>
+    //  a=[6,7] and b=[9,10], and the process continues, and c array upto here will be like c=[1,5]
+    c.push(a[0] > b[0] ? b.shift() : a.shift());
+    console.log(c);
+  }
+
+  //if we still have values, let's add them at the end of `c`
+//   for example when two arrays with value like (5) & (6) are cheked above, then one is pushed in the c array, but pusing the other value in c array, we need this line because,
+// in above code, loop will run until either of a.length or b.length becomes zero, if any one of them has length zero, then the loop will not run
+// b.shift or a.shift will remove the value from the array
+  while (a.length) {
+    // for array like a=[5] b=[12] , first it's checked which is greater in above code, so (5) which is the smaller is shifted to c array
+    // now b= [] (empty) ,so b.length =0 =>now above code doesnot satiesfies as oneof the length is zero, so then it comes to these block, and the array which is left to insert in c array is pushed there, here (12)
+    c.push(a.shift())
+  }
+  while (b.length) {
+    c.push(b.shift())
+  }
+
+  return c
+}
+
+const mergeSort = (a) => {
+  if (a.length < 2) return a
+  const middle = Math.floor(a.length / 2)
+  const a_l = a.slice(0, middle)
+  const a_r = a.slice(middle, a.length)
+  const sorted_l = mergeSort(a_l)
+  const sorted_r = mergeSort(a_r)
+  return _mergeArrays(sorted_l, sorted_r)
+}
+var a=[6,5,12,10,9,1];
+console.log("merge sort with another technic");
+console.log(mergeSort(a));
+</script>

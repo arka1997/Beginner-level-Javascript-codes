@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mytab" >
+        <table id="mytable" border="1" style="width:100%;border: 2px solid black;">
+            <thead>
+                <tr id="myrow">
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th id="mytbl">Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
+                </tr>
+            </tbody>
+            <tr>
+              <td>Eve</td>
+              <td>Jackson</td>
+              <td>94</td>
+            </tr>
+        </table>
+    </div>
+    <input type="number" id="text1">
+    <div id="addTxt"></div>
+    <button type="button" id="btn" onclick="myfunc2()">Try it</button>
+</body>
+</html>
+<script>
+    var fetch = document.getElementById("mytable");
+    var thed = fetch.tHead;
+    // thed.innerHTML = "<tr><th>No</th><th>Student</th></tr>";
+    console.log(thed);
+    var fetchrow = mytable.rows;//this returns the number of row nodes
+    console.log(fetchrow);
+    // now below we manipulate or fetch or modify this nodes
+    console.log(fetchrow[0].cells.length);
+    console.log(fetchrow[0].cells[0].innerHTML = "BBC");
+    console.log(fetchrow[0].cells.namedItem("mytbl"));//this to access a single cell with id attribute of a particular row
+    console.log(fetchrow.namedItem("myrow").cells.namedItem("mytbl"));//her we fetch a particular row with id attribute
+    fetchrow.namedItem("myrow").insertCell(3).innerHTML = "gender";
+    fetchrow[0].deleteCell('namedItem("mytbl")');
+</script>
+<script>
+    function myFunction(){
+        // here we fetch values, create a new row, and then create cells and enter values in them with for in loop
+        var inputfetch = document.getElementsByName("myarr[]");//fetch input values in array format
+        var mytable1 = document.getElementById("mytable");
+        var row= mytable.insertRow(-1);
+        for(var i=0;i<inputfetch.length;i++){
+        var cell= row.insertCell(i);
+        cell.innerHTML = inputfetch[i].value;
+        }
+    }
+    function setmyAttribute(arrays , myattr){
+        for(var key in myattr){
+            arrays.setAttribute(key,myattr[key]);
+        }
+    }
+    function myfunc2(){
+        // here we fetch the number from text box => create that no of input box => set the attributes in anothe function named "setmyAttribute" =>creating a button for fetching the text values, and there by values from the text box are are appended to the table
+        var inputfetch = document.getElementById("text1").value;
+        for(var j=0;j<inputfetch;j++){
+            var createTxt = document.createElement("input");
+
+            setmyAttribute(createTxt,{"type":"text","placeholder":"enter row data","id":"mytblRow"+j,"name":"myarr[]"})
+            
+            var fetchId = document.getElementById("addTxt");
+            fetchId.appendChild(createTxt);
+        }
+        var btns = document.createElement("button");
+        btns.innerHTML = "submit";
+        btns.onclick = function(){myFunction()};
+        btns.setAttribute("type","submit");
+        fetchId.appendChild(btns);
+         }
+</script>
+   

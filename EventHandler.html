@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+      form {
+  background-color: green;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+div {
+  background-color: blue;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 100px;
+  height: 100px;
+}
+
+p {
+  background-color: red;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+}
+
+body {
+  line-height: 25px;
+  font-size: 16px;
+}
+  </style>
+</head>
+
+<body id="all" >
+  A click shows both <code>event.target</code> and <code>this</code> to compare:
+  <h1>ADD EVENT LISTENER</h1>
+  <button id="mybtn" >Click Me</button>
+  <form id="forms" data-name="grandparent">FORMs
+    <div id="divs" data-name="parent">DIVs
+      <p id="para" data-name="child">Ps</p>
+    </div>
+  </form>
+</body>
+</html>
+<script>
+    // Use of Event handler, we can add multiple events to a button click and con execute the tasks one after the other
+    var btn = document.getElementById("mybtn");
+    function show(){alert("hii you");}
+    function hide(){alert("Bye you");}
+    btn.addEventListener("click",show);
+    btn.addEventListener("click",hide);
+    // suppose if we want to remove any event Listener
+    btn.removeEventListener("click", show);
+</script>
+<script>
+    var all = document.getElementById("all");
+    var Formbubbling = document.getElementById("forms");
+    var Divbubbling = document.getElementById("divs");
+    var Pbubbling = document.getElementById("para");
+    function func1(e){
+        console.log(e.currentTarget);
+    }
+    // Types of Events
+    // CAPTURING
+    // this true parameter tells user to follow capturing phase, and by default if we want to remove anyone of those below capturing events, then we have to include the boolean parameter also
+        // Formbubbling.addEventListener("click",function(e){ console.log("1");},true);
+        // Divbubbling.addEventListener("click",function(e){ console.log("2");},true);
+        // Pbubbling.addEventListener("click",function(e){ console.log("3");},true);
+        // BUBBLING
+        // Formbubbling.addEventListener("click",function(e){ console.log(1);});
+        // Divbubbling.addEventListener("click",function(e){ console.log(2);});
+        // Pbubbling.addEventListener("click",function(e){ console.log(3);});
+    // END \\
+    </script>
+    <script>
+      //For bubbling -> if we click on child container -> target is child, currentTarget is child -> now as it is bubbline -> it will bubble to the top grandparent, and in the way triggering all other event Handlers and setting their target and current Target..
+      // For Capturing -> if we click on child container -> the capturing starts from grandparent to child i.e.,top to bottom approach, and event handler is triggered printing target = child , currentTarget = form -> now it will dig on from top to button till where the click is made, adn go on triggering all other event handlers
+      Formbubbling.addEventListener("click",function(event){
+        console.log("target  = "+ event.target.tagName + ",this or currentTarget = "+event.currentTarget.tagName);
+    });
+
+    Divbubbling.addEventListener("click",function(event){
+        console.log("target = "+ event.target.tagName + ",this or currentTarget = "+this.tagName);
+    });
+    Pbubbling.addEventListener("click",function(event){
+        console.log("target = "+ event.target.tagName + ",this or currentTarget = "+this.tagName);
+    });
+    // Difference between Target and CurrentTarget for CAPTURING Phase
+        // Formbubbling.addEventListener("click",function(e){
+        //     console.log("1");
+        //     console.log("Target ="+e.target.dataset.name);
+        //     console.log("CurrentTarget = " + e.currentTarget.dataset.name);
+        // },true);
+        // Divbubbling.addEventListener("click",function(e){
+        //     console.log("2");
+        //     console.log("Target ="+e.target.dataset.name);
+        //     console.log("CurrentTarget = " + e.currentTarget.dataset.name);
+        // },true);
+        // Pbubbling.addEventListener("click",function(e){
+        //     console.log("3");
+        //     console.log("Target ="+e.target.dataset.name);
+        //     console.log("CurrentTarget = " + e.currentTarget.dataset.name);
+        // },true);
+    // END \\
+
+    // Difference between Target and CurrentTarget for BUBBLING PHASE where by default the boolean parameter is set to false
+        // Formbubbling.addEventListener("click",function(e){
+        //     console.log("$$ Bubbling phase $$");
+        //     console.log("1");
+        //     console.log("Target ="+e.target.dataset.name);
+        //     console.log("CurrentTarget = " + e.currentTarget.dataset.name);
+        // });
+        // Divbubbling.addEventListener("click",function(e){
+        //     console.log("2");
+        //     console.log("Target ="+e.target.dataset.name);
+        //     console.log("CurrentTarget = " + e.currentTarget.dataset.name);
+        // });
+        // Pbubbling.addEventListener("click",function(e){
+        //     console.log("3");
+        //     console.log("Target ="+e.target.dataset.name);
+        //     console.log("CurrentTarget = " + e.currentTarget.dataset.name);
+        // });
+    // END \\
+      </script>
+      <script>
+    // EVENT stopPropogation and immediate stop propogation examples for Bubbling phase
+        // function forms1(e){ 
+        //     console.log("1");
+        //     this.style.backgroundColor = 'purple';//this refers to the object whivh is calling, here "Formbubbling"
+        // }
+        // function div_s1(e){ 
+        //     console.log("3");
+        //     this.style.backgroundColor = 'yellow';//this refers to the object whivh is calling, here "Formbubbling"
+        //     e.stopPropagation();//this will execute all other handlers on this particular element of "div" and prevent the execution further from buttom to top
+        //     // e.stopImmediatePropagation();//this will execute the current function and then stop all other handlers including handlers of thissame element of div, and prevent further execution
+        // }
+        // function div_s2(e){ 
+        //     console.log("2");
+        //     this.style.border = '4px solid grey';
+        // }
+        // function P_s1(e){ 
+        //     console.log("4");
+        //     this.style.backgroundColor = 'orange';//this refers to the object whivh is calling, here "Formbubbling"
+        // }
+        // Formbubbling.addEventListener("click",forms1);
+        // Divbubbling.addEventListener("click",div_s1);
+        // Divbubbling.addEventListener("click",div_s2);
+        // Pbubbling.addEventListener("click",P_s1);
+//    there is another event called e.preventDefault(). It is used with <a href="#"> link to prevent the link from loading to given link, instead we can set it to a default loading page
+// It can be used like, if suppose there is a broken or crashed link in a website, then if the user clicks on it then we can redirect it to 404 error page
+</script>

@@ -1,0 +1,39 @@
+
+.form {
+  position:absolute;
+}
+.form .head {
+  width:100%;
+  height:55px;
+  display:flex;
+}
+
+
+.form .body {
+  /*position:absolute;*/
+  overflow:hidden;
+}
+.form .body > div {
+  position:absolute;
+  transition:all 300ms ease-in-out;
+}
+.form .body > div.login {
+  left:0%;
+}
+.form .body > div.signup {
+  left:100%;
+}
+.form .body.active > div.login {
+  left:-100%;
+}
+.form .body.active > div.signup {
+  left:0%;
+}
+.form .body .form-row button {
+ /* width:100%;*/
+  background:#3399ff;
+  color:#fcfcfc;
+}
+.form .body .signup .form-row button {
+  background:#0f2d41;
+}

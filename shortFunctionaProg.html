@@ -1,0 +1,53 @@
+<script>
+    
+    let calculator = {
+        read : ()=>{
+            // this.num1 = prompt("enter a number","any numeric");
+            // this.num2 = prompt("enter a number","any numeric");
+        },
+    sum : ()=>{return this.num1 + this.num2;},
+    mul : () => { return this.num1* this.num2;}
+};
+
+calculator.read();
+console.log(calculator.sum() );
+console.log( calculator.mul() );
+</script>
+<script>
+     let ladder = {
+    step: 0,
+    up(){
+        this.step++;
+        return this;
+    },
+    down(){
+        this.step--;
+        return this;
+    },
+    showStep(){
+    return this;
+    },
+} 
+    b=ladder.up().up().down().showStep();
+    console.log(b);
+</script>
+<script>
+    // this is how we write functonal object
+    // Creating calculator with a single function which has sub function for taking input, adding and multiplying th values..
+    function Calculator1(){
+        this.read = ()=> {
+            this.a = prompt("enter num1");
+            this.b = prompt("enter num2");
+        };
+        this.sum = () => {
+            return +this.a + +this.b;
+        };
+        this.mul = () => {
+            return this.a + this.b;
+        };
+    }
+    let calc = new Calculator1();
+    calc.read();
+    console.log(calc.sum());
+    console.log(calc.mul());
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="abc" onchange="magic(this.value)">
+        <option value="">--Select--</option>
+        <option value="Apple">Apple</option>
+        <option value="Orange">Orange</option>
+        <option value="Pineapple">Pineapple</option>
+        <option value="Banana">Banana</option>
+      </select>
+
+    <input type="text" id="demo">
+
+    <input type="text" class="aa"  value="Apple" placeholder="Apple">
+    <input type="text" class="aa" value="Orange" placeholder="Orange">
+    <input type="text" class="aa" value="Pineapple"placeholder="Pineapple">
+    <input type="text" class="aa"  value="Banana" placeholder="Banana">
+
+    
+    
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</html>
+<script>
+    // $( document ).ready(function(){        
+
+    //     var bb = $('#abc').val();
+    //     $('#demo').val(bb);
+
+    //     $( ".aa" ).each(function( index ) {
+    //         if(bb == this.value)
+    //         {
+    //             $(this).attr('required', true);
+    //         }
+    //         else
+    //         {
+    //             $(this).attr('required', false);
+    //         }
+    //     });
+
+    // });
+    function magic(bb){
+
+        $('#demo').val(bb);
+
+        $( ".aa" ).each(function( index ) {
+            if(bb == this.value)
+            {
+                $(this).attr('required', true);
+            }
+            else
+            {
+                $(this).attr('required', false);
+            }
+        });
+    }
+</script>

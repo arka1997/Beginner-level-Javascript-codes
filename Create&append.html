@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myid">
+        <h1 id="myh1">we are learning javascript</h1>
+    </div>
+    <section id="mysec"></section>
+</body>
+</html>
+<script>
+    var childNode = document.getElementById("myh1");
+    var parentNode = document.getElementById("mysec");
+    console.log("append has no return type: "+parentNode.append(childNode));
+    console.log("appendChild has return type: "+ parentNode.appendChild(childNode));
+</script>
+<script>
+    var divNode = document.createElement("div");
+    var pnode = document.createElement("p");
+    var pnode2 = document.createElement("p");
+    // difference between append & appendChild \\
+    console.log("1st difference");
+    var textNode = pnode.append("hii bro");//here we can use append to insert DOM Strings to elemnts
+    var textNode2 = pnode.appendChild("hii bro2");// this will throw an error because  appendChild doesnot except text or comment nodes for adding to HTML DOM
+    // but instead of inserting strings to apend child, we can create text or comment nodes first, and then we can append it to element 
+    console.log("2nd difference");
+    console.log(divNode.append(pnode));//append doesnot return anything
+    console.log(divNode.appendChild(pnode));//append child is a return type and returns the child element
+    console.log("3rd difference");
+    // console.log(divNode.append(pnode,pnode2,'hellow world'));
+    // console.log(divNode.appendChild(pnode, pnode2, 'hellow world2'));//this shows an error as "appendChild" doesnot support adding multiple child classes 
+    
+    var pNode = document.createElement("div");
+    var nNode = document.createComment("hii brother");
+    var cnode = document.createTextNode("good boy");
+    pNode.appendChild(nNode);
+    console.log(pNode);
+</script>

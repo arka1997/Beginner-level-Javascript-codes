@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<body><script>
+    //Declaring Objects
+    //Here Properties are "type" & "model"
+    //THREE Types of different initialisation//
+    var obj = {"number":100, "Bat Man":"DC_Hero","yoyo":80};//Inside parenthesis we declare the properties or keys and assign values to them
+        //OR//
+        obj['number']=100;//here also we initialize but using the object name..
+        obj["Bat Man"]= "DC_Hero";
+        obj.Rahul=200;//only writing this, but application for one word properties only.we cannot write "obj.Bat Man"
+        obj.type;
+        //3 types of Output
+        document.write(obj['number']);
+        document.write(obj["Bat Man"]);
+        document.write(obj.number);
+        //to delete something
+        delete obj.yoyo; //this will delete the "yoyyo" property in the "var obj" object...
+       console.log(obj);
+        obj.show = function(){};//this is how method is declared, method show() which becomes a function on adding function() to it. 
+        
+    
+    //this is a declarion of different properties of object named "person" inside parenthesis
+       //Here declaration and initialization takes inside parenthesis
+        var person = {
+                        firstName: "John",
+                        lastName : "Doe",
+                        id       : 5566,
+                        fullName : function() {   //we can also declare function inside objects
+                            return this.firstName + " " + this.lastName;
+                        } 
+                    };
+        document.write("<br>"+person.fullName());//This is how we call a function inside parenthesis of an object..
+//In a function definition above, this refers to the "owner" of the function.
+//In the example above, this is the person object that "owns" the fullName function.
+//In other words, this.firstName means the firstName property of this object.
+
+var fees = {};
+fees['total']= function (){ return (100+200);};// this is anonymous function declared inside a object
+fees['total']();//calling the above function in this way
+</script>
+<!--END-->
+
+<script>
+//         FACTORY FUNCTION:        \\
+// When a function returns a object, we call it a factory function. It can use object instance without using new keyword or classes.
+//so if "model" key is same, but the names of model are different,ex. galaxy or oppo,etc.
+function mobile(fact)
+{
+    return {
+    model : fact,
+    price : function() { return ("Rs. 3000");  }
+    };
+}
+//var fact=prompt("enter mobile name");//creating an input
+
+//now creating object instance
+var samsung = mobile(fact); //so here we call the previous function to get the same properties of the       			   previous object in this “Samsung” variable
+
+console.log(samsung);//it will show in the console log
+document.write("<br>"+samsung.model+ " " + samsung.price());//this is how we create object and call function and acces the properties inside it..
+ </script>
+<!--END-->
+
+<script>
+    //      CONSTRUCTOR FUNCTION  \\
+    //check if property exists or not //
+//to check a property we first write typeof , and then we write the object name,(Here samsung & nokia)
+    function Mobile(model_no)
+    {
+        this.model = model_no;
+        this.memory = 4;
+        this.color = 'white';
+        this.price = function(){document.write(this.model + "Price Rs 3000 <br>");}
+    }
+    //Below are the Object Constructor\\
+    var samsung = new Mobile('Galaxy'); //Here Mobile is the constructor, which is called..
+    var nokia = new Mobile('3310');
+    //using TYPEoF \\
+    if(typeof nokia.memory !== 'undefined'){  //this checks whether the property of the object inside the Mobile function is undefined or not..
+        document.write("<br>"+"Available");
+    }
+    else{document.write("<br>"+"Doesn't Exist");}
+    //checking if property exists or not\\
+    if(typeof nokia.ram !=='undefined'){  //this is false
+        document.write("<br>"+"Exist");
+    }
+    else{document.write("<br>"+"Doesn't Exist");}
+
+    //Use of "in"\\
+    if('model' in samsung)
+    {
+        document.write("<br>"+"Property exists in function Mobile");
+    }
+    else{document.write("<br>"+"Doesn't exists");}
+
+    //Use of "hasOwnProperty"\\
+    if(samsung.hasOwnProperty('color'))
+    {
+        document.write("<br>"+"Available");
+    }
+    else{document.write("Doesn't exist");}
+</script>
+<!--END-->
+<br>
+<script>
+//// "For in" LOOP \\\\
+//It is used to run a loop and access and print all the values of the assigned properties of an object
+function Mob(model_no)
+    {
+        this.model = model_no;
+        this.memory = 4;
+        this.color = 'white';
+        this.price = function(){document.write(this.model + "Price Rs 3000 <br>");};
+    }
+    var lg = new Mob('Galaxy'); 
+    var micro = new Mob('3310');
+    //method  to print all the keys present in the constructor object i,e.,Mob
+    document.write("keys are="+ Object.keys(lg));
+    //for( var "key_name" in "object_name"), where "in" is a operator which access the keys or properties one by one in the object..
+    for(var key in lg)
+    {
+        document.write(lg[key] + "<br>");
+        //if we want the function property (i.e., price) to be excluded, then we can write
+    if(typeof lg[key] !== 'function')
+    {
+        document.write(key + " "+lg[key]+ "<br>");
+    }
+    }
+</script>
+<!--END-->
+"---------oops example------"
+<script>
+    //Using variable function as "class"  \\\
+    var laptop = function(model,SPrice)
+    {//this refers to the current or last object. "this" points to that object only from which it is called..
+        this.model=model;
+        this.price = SPrice;
+        this.gst = 3000;
+        this.colour ='white';
+        this.sprice = function()
+        {
+            return(this.gst+this.price);
+        };
+        this.data = function()
+        {
+            document.write("<br>"+"Model No."+this.model+" "+"has a price of"+" "+this.sprice()+" "+"and colour is"+" "+this.colour);
+        }
+    }
+
+    //Declaring object and calling a "laptop" constructor defined above \\
+    var dell = new laptop('Inspiron',3000);
+    var hp = laptop('pavilion',5000);
+    dell.data();
+</script>
+<!--END-->
+
+<script>
+    // use of private keywords ("var, let, const") to make properties and methods private  \\
+    var cycle = function(cyc)
+    {
+        this.model = cyc;
+        var price=3000; //his is a private property as var is used..
+        this.sp = function()//here this is used for public propeties..this is used to access the private property inside this public property...
+        {
+            return(price);
+        }
+    }
+    var tata = new cycle(tata);
+    document.write("<br>"+tata.sp());//calling the property "sp" of the function with the object "tata"...
+</script>
+<!--END-->
+
+<script>
+    //PROTOTYPE DEFINATION(Super class)
+    var laptop = function(model,SPrice)
+    {//Instance Member
+     this.model=model;
+        this.price = 3000;
+    };
+    var samsung = new Mobile('Galaxy');
+    var nokia = new Mobile('3310');
+    //classname.prototype.key = 'value';
+    //Prototype Member
+    Mobile.prototype.color = 'white';
+    document.write("<br>"+samsung.color);
+    samsung.height=150;
+    document.write("<br>"+samsung.height);
+    document.write("<br>"+ "this will not show any value="+nokia.height);//because we declare the samsung object to hold the property of height.But it is not declared in nokia object..
+    //but the solution is we can use "prototype" method, to declare any property for both objects..an that property will be shown in the console bar in "proto'...
+    console.log(samsung);
+</script>
+</body>
+</html>

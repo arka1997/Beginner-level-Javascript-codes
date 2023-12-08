@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Task</title>
+</head>
+<body>
+    <div class="container pt-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                             <div class="row">
+                                 <div class="col-6 text-left">Javascript Tasks</div>
+                                 <div class="col-6 text-right"><span class="text-success"><b>Update successfully done</b></span></div>
+                             </div>                           
+                        </div>
+                        <div class="card-body">
+                            <div class="row">                                
+                                <div class="col-md-12">                                    
+                                    <ul class="p-0">
+                                        <li style="list-style: none;">
+                                            <b>Task One : </b>The clicked checkboxes will show theor respective email below
+                                        </li>
+                                        <li style="list-style: none;">
+                                            <b>Task Two : </b>The input boxes shoud be updated and shown in normal view, and their should be a toggle either the input box ore the view of the value in box
+                                        </li>
+                                        <li style="list-style: none;">
+                                            <b>Task Three : </b>"upload successfully" is to be dynamically shown using function in the above header
+                                        </li>
+                                        <li style="list-style: none;">
+                                            <b>Task four : </b>Searching the table with table name
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group w-50">
+                                        <input type="text" placeholder="Search" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th><input type="checkbox"></th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Mobile</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input value="shovan90@gmail.com" type="checkbox"></td>
+                                                <td><input type="text" value="Shovan Nandi" id="update_name_1" class="form-control d-none"><span id="name_1">Shovan Nandi</span></td>
+                                                <td><input type="text" value="shovan90@gmail.com" id="update_email_1" class="form-control d-none"><span id="email_1">shovan90@gmail.com</span></td>
+                                                <td><input type="text" value="9876543210" id="update_mobile_1" class="form-control d-none"><span id="mobile_1">9876543210</span></td>
+                                                <td><button type="button" onclick="return update();" class="btn btn-info">Update</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input value="subham@gmail.com" type="checkbox"></td>
+                                                <td><input type="text" value="Subham Nandi" id="update_name_2" class="form-control"><span class="d-none" id="name_2">Subham Nandi</span></td>
+                                                <td><input type="text" value="subham@gmail.com" id="update_email_2" class="form-control"><span class="d-none" id="email_2">subham@gmail.com</span></td>
+                                                <td><input type="text" value="9876543211" id="update_mobile_2" class="form-control"><span class="d-none" id="mobile_2">9876543211</span></td>
+                                                <td><button type="button" onclick="return update();" class="btn btn-info">Submit</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input value="suman@gmail.com" type="checkbox"></td>
+                                                <td><input type="text" value="Suman Nandi" id="update_name_3" class="form-control d-none"><span id="name_3">Suman Nandi</span></td>
+                                                <td><input type="text" value="suman@gmail.com" id="update_email_3" class="form-control d-none"><span id="email_3">suman@gmail.com</span></td>
+                                                <td><input type="text" value="9876543212" id="update_mobile_3" class="form-control d-none"><span id="mobile_3">9876543212</span></td>
+                                                <td><button type="button" onclick="return update();" class="btn btn-info">Update</button></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <button class="btn btn-success btn-sm">shovan90@gmail.com</button>
+                                                    <button class="btn btn-success btn-sm">shovan91@gmail.com</button>
+                                                    <button class="btn btn-success btn-sm">shovan91@gmail.com</button>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+  background-color: rgb(0, 225, 255);
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 100px;
+  height: 100px;
+}
+
+p {
+  background-color: rgb(255, 67, 161);
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+}
+input{
+    margin-bottom: 250px;
+}
+#divs{
+    margin-top: 240px;
+}
+body {
+  line-height: 25px;
+  font-size: 16px;
+}
+    </style>
+</head>
+<body>
+    <h1>ADD EVENT LISTENER</h1>
+    <h2 id="showTxt"></h2>
+    <button id="mybtn" >Click Me</button><br>
+    Name <input type="text" id="mytext">
+        <div id="divs" data-name="parent">DIVs
+          <p id="para" data-name="child">Ps</p>
+        </div>
+</body>
+</html>
+<script>
+    // mousedown – It fires just when the mouse button is pressed down but not released
+	// mouseup – It fires when the mouse button is released from being pressed
+	// click – It fires as soon as something is clicked, in this scenario , mousedown, mouseup & click all event are together fired in this sequence.
+ 	// dblclick – It fires when something is clicked twice in rapidly, mousedown, mouseup, click, mousedown, mouseup, click and dblclick events fires in sequence.
+ 	// mouseenter -  It fires when a mouse starts to hover over same element. NO BUBBLE
+ 	// mouseout – It fires when a mouse leaves from hovering over some element
+    // mouseleave - It fires when a mouse exits while hovering over some element, so no effect or event is triggered for its child elements. NO BUBBLE
+    // mouseover - It fires when mouse is hovering over some element
+ 	// mousemove – It fires when the mouse moves
+ 	// contextmenu – It fires when mouse right button is clicked
+    // her we will see the events in double in output, becuase those events which supports bubbling, when we clicked on its child, then it will bubble up to parent and trigger all "Events" in the way
+
+    var Divbubbling = document.getElementById("divs");
+    var Pbubbling = document.getElementById("para");
+
+    // TEXT BOX MANIPULATION EVENTS
+    var inputTxt = document.getElementById("mytext");
+    inputTxt.addEventListener("mousedown",e => {
+        inputTxt.style.backgroundColor = "red";
+        console.log(e.type);});
+    inputTxt.addEventListener("mouseup",e => {
+        inputTxt.style.backgroundColor = "rgb(247, 119, 183)";
+        console.log(e.type);});
+    inputTxt.addEventListener("blur",e => {
+        inputTxt.style.backgroundColor = "white";
+        console.log(e.type);});
+    Pbubbling.addEventListener("dblclick",e => {console.log(e.type);});
+    // END \\
+
+    Pbubbling.addEventListener("mousedown",e => {console.log(e.type);});
+    Pbubbling.addEventListener("mouseup",e => {console.log(e.type);});
+    Pbubbling.addEventListener("dblclick",e => {console.log(e.type);});
+    // Divbubbling.addEventListener("mouseout",e => {console.log(e.type);});//this works for this element itself adn also for its childs
+    // Divbubbling.addEventListener("mouseover",e => {console.log(e.type);});//this event is triggered two times when we hover over both parent and its childs
+    // Divbubbling.addEventListener("mouseenter",e => {console.log(e.type);});//this triggers only on time when we hover and its child does not trigger these event again just like "mouseover event"
+    // Divbubbling.addEventListener("mouseleave",e => {console.log(e.type);});this works only for the current Target element and not for its child
+    // Pbubbling.addEventListener("mousemove",e => {console.log(e.type);});
+    
+    
+    Divbubbling.addEventListener( "mousedown", e => { console.log(e.type);
+            Divbubbling.style.backgroundColor = "green";});
+    Divbubbling.addEventListener( "mouseup", e => { console.log(e.type);
+            Divbubbling.style.backgroundColor = "purple";  });
+    Divbubbling.addEventListener( "dblclick", e => { console.log(e.type);
+            Divbubbling.style.backgroundColor = "orange"; });
+    Divbubbling.addEventListener( "mouseout", e => {console.log(e.type);
+            Divbubbling.style.backgroundColor = "rgb(0, 225, 255)"; });//this works for this element itself adn also for its childs
+    Divbubbling.addEventListener( "mouseover", e => { console.log(e.type);
+            Divbubbling.style.backgroundColor = "blue";});//this event is triggered two times when we hover over both parent and its childs
+    // Divbubbling.addEventListener( "mouseenter",e => { console.log(e.type); });//this triggers only on time when we hover and its child does not trigger these event again just like "mouseover event"
+    // Divbubbling.addEventListener( "mouseleave",e => { console.log(e.type); });this works only for the current Target element and not for its child
+    Divbubbling.addEventListener( "mousemove", e => { console.log(e.type); });
+    i="jh"+3;
+    i = i ? i < 0 ? Math.max(0, len + i) : i : 0;
+    console.log(i);
+</script>
+<script>
+    // KEY EVENTS \\
+    inputTxt = document.getElementById("mytext");
+    function keyaccess(e){
+        console.log(e.type + " " +" (AScii) " + e.keyCode + " "+ String.fromCharCode(e.keyCode));
+    }
+    function keyaccess(e){
+        console.log(e.type + " " +" (AScii) " + e.keyCode + " "+ String.fromCharCode(e.keyCode));
+    }
+    function keyaccess(e){
+        console.log(e.type + " " +" (AScii) " + e.keyCode + " "+ String.fromCharCode(e.keyCode));
+    }
+    inputTxt.addEventListener("keydown", keyaccess);
+    inputTxt.addEventListener("keypress", keyaccess);
+    inputTxt.addEventListener("keyup", keyaccess);
+</script>
+<script>
+    // TEXT EVENT \\
+    
+    inputTxt = document.getElementById("mytext");
+    var show = document.getElementById("showTxt");
+    function showTxt(e){
+        console.log(e.data);
+        show.append(e.data);
+    }
+    inputTxt.addEventListener("textInput", showTxt);
+</script>

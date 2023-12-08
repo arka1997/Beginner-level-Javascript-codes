@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+        font-family: Arial;
+        padding: 25px;
+        background-color: #f5f5f5;
+        color: #808080;
+            text-align: center; 
+        }
+        .col_half { width: 49%; }
+        .col_third { width: 32%; }
+        .col_fourth { width: 23.5%; }
+        .col_fifth { width: 18.4%; }
+        .col_sixth { width: 15%; }
+        .col_three_fourth { width: 74.5%;}
+        .col_twothird{ width: 66%;}
+        .col_half,
+        .col_third,
+        .col_twothird,
+        .col_fourth,
+        .col_three_fourth,
+        .col_fifth{
+        position: relative;
+        display:inline;
+        display: inline-block;
+        float: left;
+        margin-right: 2%;
+        margin-bottom: 20px;
+        }
+        .end { margin-right: 0 !important; }
+        /* Column Grids End */
+
+        .wrapper { width: 980px; margin: 30px auto; position: relative;}
+        .counter { background-color: #ffffff; padding: 20px 0; border-radius: 5px;}
+        .count-title { font-size: 40px; font-weight: normal;  margin-top: 10px; margin-bottom: 0; text-align: center; }
+        .count-text { font-size: 13px; font-weight: normal;  margin-top: 10px; margin-bottom: 0; text-align: center; }
+        .fa-2x { margin: 0 auto; float: none; display: table; color: #4ad1e5; }
+    </style>
+</head>
+<body>
+<h1>JQUERY NUMBER ANIMATION</h1>
+<h3>jQuery counter to count up to a target number</h3>
+
+<div class="wrapper">
+    <div class="counter col_fourth">
+      <i class="fa fa-code fa-2x"></i>
+      <h2 class="timer count-title count-number" data-to="300" data-speed="1500"></h2>
+      <p class="count-text ">SomeText GoesHere</p>
+    </div>
+
+    <div class="counter col_fourth">
+      <i class="fa fa-coffee fa-2x"></i>
+      <h2 class="timer count-title count-number" data-to="1700" data-speed="1500"></h2>
+      <p class="counts" data-value="20" >0</p>
+    </div>
+
+    <div class="counter col_fourth">
+      <i class="fa fa-lightbulb-o fa-2x"></i>
+      <h2 class="timer count-title count-number" data-to="11900" data-speed="1500"></h2>
+      <p class="count-text ">SomeText GoesHere</p>
+    </div>
+
+    <div class="counter col_fourth end">
+      <button onclick=""></button>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var val = document.querySelector(".counts").getAttribute('data-value');
+    // const cc = setTimeout(,1000);
+    function func(ll){
+      console.log(ll);
+    }
+    setTimeout(()=> {
+      j++
+      setTimeout
+    })
+    let j = 1;
+setTimeout(function run() {
+  if(j<val){
+  func(j++);
+  setTimeout(run, 100);
+  document.querySelector(".counts").innerText = j;
+  }
+}, 100);
+</script>
+<script>
+  // setTimeout recursion function
+  function printNumbers(from, to){
+    let current = from;
+    setTimeout(function timer() { 
+      alert(current);
+      if(current < to){
+        setTimeout(timer, 1000);
+      }
+      current++; 
+      },1000);
+    }
+  printNumbers(5, 10);
+</script>

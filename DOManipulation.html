@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- <p class="geek" >sdfdsfsdf</p> -->
+    <title class="geek">Document</title>
+</head>
+<body>
+    <p id="demo">re</p>
+    <p id="para1"></p>
+    <h1 id="gg" class="apple">dsqwewqefdsfdsf</h1>
+    <div id="val">
+        <span target ="span1">rhythmic beatz</span>
+        <p class="find myclass" >sdfdsfsdf</p> 
+        <div class="cvb">
+        <p class="geek" data-key="paraDOM" onclick ="func()"><span class="demos">dwefwefwe</span>dfsfdsf</p> 
+    </div>
+    <span target ="span2">wefwefew</span>
+        <b>cewwec</b>
+        <h1>Hello</h1>
+    </div>
+    <p id="gets"><span>bye</span>rhythm</p>
+    <button type="submit" onclick="preview()">btn</button>
+    <script>
+        var result = document.getElementsByTagName('span');
+        console.log("1");
+        console.log(result.length);
+        console.log("2");
+        for(let i=0;i < result.length; i++){
+            var res = document.getElementsByTagName('span')[i];
+            document.write("hii"+res);
+            console.log(res);
+        }
+        console.log("3");
+        console.log(result);
+        var result2 = document.getElementsByTagName('span')[0];//the 0th index
+        console.log("4");
+        console.log(result2);
+        var getdiv = document.getElementById("val").getElementsByTagName("*");
+        console.log("5");
+        console.log(getdiv);
+
+        var check = document.getElementsByClassName("geek");
+        console.log("6");
+        console.log(check);
+        var check2 = document.body.getElementsByClassName("geek");
+        console.log("7");
+        var mapping = 
+        console.log(check2);
+        var check3 = document.body.getElementsByClassName("find myclass");
+        console.log("8");
+        console.log(check3);
+        let para1 = document.getElementById("para1");
+        para1.innerHTML="<h2>bablu dfg</h2>";
+
+        // Query selector is used to select whole element with help of ids as well as classname or tagname
+        console.log("9");
+        let para2 = document.querySelector("h1,p");//this actually prints the whole and particular that element which is present first in the DOM tree
+        console.log(para2);
+        console.log("10");
+        let para3 = document.querySelectorAll("h1")[0];//this actually prints the whole element
+        console.log(para3);
+        console.log("11");
+  var para4=document.getElementById("val").querySelectorAll("p.geek");
+        console.log(para4);
+        // or you can write \\
+        console.log(12);
+  var para5=document.querySelectorAll("#val> .geek > .demos");
+        console.log(para3);
+        
+        console.log("13");
+        // attribute selector \\
+        var attr = document.getElementById("val");
+        var getattr1 = "{key}"+attr.attributes[0].name + " = "+ "{value}"+attr.attributes[0].value;//earlier nodeName was used
+        console.log(getattr1);
+        var getattr2 = attr.attributes[0].nodeValue;//NodeValue is now called value
+        console.log(getattr2);        
+        var getattr3 = attr.attributes[0].nodeType;
+        console.log(getattr3);
+        var getattr4 = document.getElementById("demo");
+        // .attributes[0].name;
+        // var getattr5 = attr.attribute[0].name;
+        // console.log(getattr5);   
+        var g = document.getElementById("gg");
+        var attrval = "{key} ="+g.attributes[0].name+", val ="+g.attributes[0].value+"\n"+ "{key}"+g.attributes[1].name+"="+"{val}"+g.attributes[1].value;
+        console.log(attrval); 
+
+        // CHILD NODES \\
+        var g = document.getElementById("val");
+        console.log(g.childNodes); 
+    </script>
+    
+    </body>
+    <script  src="scriptt.js"></script>
+</body>
+</html>
+<script>
+    // bothe are same meaning below
+    [].map.call(elements, elem => elem.textContent);// here [] means Array.prototype or new Array()
+    Array.prototype.map.call(string, (x) => x);
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let object1 = {
+        name: "Deba",
+        place: "Jirat",
+        prints : function(){ 
+            console.log(`${this.name} is the ruler of ${this.place}`);
+        }
+    };
+    let object2 = {
+        name: "bani",
+    }
+    object2.__proto__ = object1;
+    // when we call a property with an objectName, then a pointer searches for the property in that object first, if doesnot found then it goes on one step up, and look for the property in its parent, if still not found, then it moves to the last, which is the object.prototype itself,if found, then displays the property, else gives unefined
+    object1.prints();//here the name is different because object1 has name deba, and it prints its name property
+    object2.prints();//object2 has name "bani" and it prints its name property..
+    console.log(object2.place);//this object first searches for the "place" property inside itself, if not found, then it goes one step up to the "object1" , which was inherited by object2, so a pointer of object2 points to the object1, and searches for the "place" property, if found then displays it.
+    
+    object1.__proto__.mybind = function(){
+        console.log("hii rocking deba");
+    }
+    mybind();
+    console.log(object1.__proto__);
+    </script>
